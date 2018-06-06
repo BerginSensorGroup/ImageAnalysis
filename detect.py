@@ -1,3 +1,5 @@
+#TODO: Test code for the case where no faces are detected by Google
+
 import io
 import os
 import json
@@ -85,9 +87,7 @@ def generatePaths(imagePath, folder, metaKey = "META", editKey = "EDITED"):
 	
 	return (file_name, meta_file_name, edited_file_name)
 
-def getFaces(file_name):
-	# Instantiates a client
-	client = vision.ImageAnnotatorClient()
+def getFaces(file_name, client):
 
 	# Loads the image into memory
 	with io.open(file_name, 'rb') as image_file:
@@ -99,18 +99,62 @@ def getFaces(file_name):
 	faces = response.face_annotations
 	return faces
 
+def  crawl(base_str, start, end, client):
+	'''
+	Assumptions:
+	Base string should be of the form 'SOMETEXT{{}}SOMETEXT.SOMETEXT'
+	all pictures should have the same extension as the provided base_string template
+	the pictures must be in a folder
+	the curly braces ({{}}) will be replaced with a number to form the json path
+	the picture should not contain any other curly braces
+	the curly braces should not be followed by the '/' character
+	example use: 
+	crawling hello/world3.jpg, hello/world4.jpg, hello/world5.jpg
+		base_str = hello/world{{}}.jpg
+		start = 3
+		end = 5
+	'''
+	folder_cutoff = base_str.rfind("/")
+	folder = base_str[:folder_cutoff]
+	#print(folder)
+	base_str = base_str[folder_cutoff+1:]
+	#print(base_str)
+	replace_index = base_str.rfind("{{}}")
+	new_base_str = base_str.replace("{{}}","")
+
+	#print(new_base_str)
+	
+	picture_number = start
+	while picture_number <= end:
+		this_path = new_base_str[:replace_index] + str(picture_number) + new_base_str[replace_index:]
+		file_name, meta_file_name, edited_file_name = generatePaths(this_path, folder)
+		#print(file_name)
+		#print(meta_file_name)
+		#print(edited_file_name)
+		faces = getFaces(file_name, client)
+		save_metadata(faces, meta_file_name)
+		highlight_faces(file_name, faces, edited_file_name)
+		picture_number += 1
 
 if __name__ == "__main__":
-	imagePath = 'G0011577.JPG'
-	folder = 'angle'
-	#to be indexed with likelihoods 0-5
-	likelihood_name = ('UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE',
-                       'LIKELY', 'VERY_LIKELY')
+	# Instantiates a client
+	client = vision.ImageAnnotatorClient()
+	decision = input("WARNING: will send many pictures, enter Y to confirm or N to abort")
+	if decision != "Y":
+		print("Aborting")
+		quit()
+	else:
+		print("Confirmed, sending pictures to Google")
+	#imagePath = 'G0011585.JPG'
+	#folder = 'angle'
 
-	file_name, meta_file_name, edited_file_name = generatePaths(imagePath, folder)
+	path = 'frames/frame{{}}.jpg'
+	crawl(path, 148, 350, client)
+	
+	#file_name, meta_file_name, edited_file_name = generatePaths(imagePath, folder)
 
-	faces = getFaces(file_name)
+	#faces = getFaces(file_name, client)
 	#eventually we want to throw out if blurry, underexposed, or low score
 
-	save_metadata(faces, meta_file_name)
-	highlight_faces(file_name, faces, edited_file_name)
+	#save_metadata(faces, meta_file_name)
+	#highlight_faces(file_name, faces, edited_file_name)
