@@ -1,5 +1,3 @@
-#TODO: Test code for the case where no faces are detected by Google
-
 import io
 import os
 import json
@@ -136,20 +134,24 @@ def  crawl(base_str, start, end, client):
 		highlight_faces(file_name, faces, edited_file_name)
 		picture_number += 1
 
-if __name__ == "__main__":
-	# Instantiates a client
-	client = vision.ImageAnnotatorClient()
-	decision = input("WARNING: will send many pictures, enter Y to confirm or N to abort")
+if __name__ == "__main__":	
+	#imagePath = 'G0011585.JPG'
+	#folder = 'angle'
+
+	path = 'nonFaces/not_a_face{{}}.jpg'
+	start = 1
+	end = 3
+	decision = input("WARNING: will send {} pictures, enter Y to confirm or N to abort: ".format(1+end-start))
 	if decision != "Y":
 		print("Aborting")
 		quit()
 	else:
 		print("Confirmed, sending pictures to Google")
-	#imagePath = 'G0011585.JPG'
-	#folder = 'angle'
-
-	path = 'frames/frame{{}}.jpg'
-	crawl(path, 148, 350, client)
+		
+	# Instantiates a client
+	client = vision.ImageAnnotatorClient()
+	
+	crawl(path, start, end, client)
 	
 	#file_name, meta_file_name, edited_file_name = generatePaths(imagePath, folder)
 
