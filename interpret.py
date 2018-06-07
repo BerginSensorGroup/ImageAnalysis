@@ -94,6 +94,14 @@ def saveConfidence(confidence_type, percent_name, face_tally, folder = ""):
 	plt.savefig(path)
 	plt.close()
 
+def confirm(base_path, folder, start, end):
+	decision = input("The json files will be drawn from pictures " + str(start) + " to " 
+		+ str(end) + " in the path: " + base_path + "\nThe histograms will be saved to the folder: " 
+		+ folder + "\nEnter Y to continue or N to abort: ")
+	if decision != "Y":
+		print("Aborting")
+		quit()
+	print("Confirmed")
 
 def crawl(base_str, start, end, EPSILON, joyCount, sorrowCount, angerCount, surpriseCount, landmarkConfidence, detectionConfidence, accepted_faces_count=0):
 	'''
@@ -102,8 +110,8 @@ def crawl(base_str, start, end, EPSILON, joyCount, sorrowCount, angerCount, surp
 	the curly braces ({{}}) will be replaced with a number to form the json path
 	the json should not contain any other curly braces
 	example use: 
-	crawling world3.json, world4.json, world5.json
-		base_str = world{{}}.json
+	crawling hello/world3.json, hello/world4.json, hello/world5.json
+		base_str = hello/world{{}}.json
 		start = 3
 		end = 5
 	'''
@@ -134,8 +142,16 @@ if __name__ == "__main__":
 	#are accepted
 	EPSILON = 0
 
+	base_path = "nonFacesMETA/not_a_face{{}}_META.json"
 	#base_path = "framesMETA/frame{{}}_META.json"
-	base_path = "angleMETA/G0011{{}}_META.json"
+	#base_path = "angleMETA/G0011{{}}_META.json"
+	folder = "nonFacesHISTOGRAMS"
+
+	start = 1
+	end = 3
+	
+	confirm(base_path, folder, start, end)
+	
 	joyCount = [0,0,0,0,0,0]
 	sorrowCount = [0,0,0,0,0,0]
 	angerCount = [0,0,0,0,0,0]
@@ -143,8 +159,8 @@ if __name__ == "__main__":
 	landmarkConfidence = [0,0,0,0,0,0,0,0,0,0]
 	detectionConfidence = [0,0,0,0,0,0,0,0,0,0]
 	
-	accepted_faces_count = crawl(base_path, 576, 585, EPSILON, joyCount, sorrowCount, angerCount, surpriseCount, landmarkConfidence, detectionConfidence)
-	folder = "angleHISTOGRAMS"
+	accepted_faces_count = crawl(base_path, start, end, EPSILON, joyCount, sorrowCount, angerCount, surpriseCount, landmarkConfidence, detectionConfidence)
+	
 	saveSentiment('Joy', likelihood_name, joyCount, folder)
 	saveSentiment('Sorrow', likelihood_name, sorrowCount, folder)
 	saveSentiment('Anger', likelihood_name, angerCount, folder)
@@ -152,3 +168,12 @@ if __name__ == "__main__":
 	#TODO: find average confidence coefficient and variance, plot them as a range
 	saveConfidence('Landmarking', confidence_name, landmarkConfidence, folder)
 	saveConfidence('Detection', confidence_name, detectionConfidence, folder)
+	'''
+	displaySentiment('Joy', likelihood_name, joyCount)
+	displaySentiment('Sorrow', likelihood_name, sorrowCount)
+	displaySentiment('Anger', likelihood_name, angerCount)
+	displaySentiment('Surprise', likelihood_name, surpriseCount)
+	displayConfidence('Landmarking', confidence_name, landmarkConfidence)
+	displayConfidence('Detection', confidence_name, detectionConfidence)
+	'''
+	
