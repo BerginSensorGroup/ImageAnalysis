@@ -1,4 +1,4 @@
-#some code altered from:
+#some code adapted from:
 #https://stackoverflow.com/questions/3362600/how-to-send-email-attachments
 #and
 #https://medium.freecodecamp.org/send-emails-using-code-4fcea9df63f
@@ -6,31 +6,49 @@
 import json
 import smtplib
 import os.path as op
+import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
 from email import encoders
+import datetime
 
 
-receiver = 'BerginReciever@gmail.com'
+#this function from:
+#https://stackoverflow.com/questions/3764291/checking-network-connection
+def have_internet():
+	'''
+	Returns True if the computer is connected to internet, else False
+	'''
+    conn = httplib.HTTPConnection("www.google.com", timeout=5)
+    try:
+        conn.request("HEAD", "/")
+        conn.close()
+        return True
+    except:
+        conn.close()
+        return False
 
-#GMAIL TO GMAIL EXCHANGE
-#host_address = "aspmx.l.google.com"
-#port_number = 25
-
-#GMAIL TO GENERAL EXCHANGE (SMTP TLS)
-host_address = "smtp.gmail.com"
-port_number = 587
-
-path = "berginSenderCredentials.json"
-
-def setup(host_address, port_number, username, password):
-	# set up the SMTP server
-	s = smtplib.SMTP(host= host_address, port= port_number)
-	s.starttls()
-	s.login(username, password)
-	return s
+def setupSMTP(host_address, port_number, username, password):
+	'''
+	Sets up the SMTP connection
+	
+	Parameters
+	host_address: the email service provider's host_address for SMTP
+	port_number: the email service provider's port number for TLS
+	user_name: the email address of the sender
+	password: the password to the email account of the sender
+	'''
+	try:
+		s = smtplib.SMTP(host= host_address, port= port_number)
+		s.starttls()
+		s.login(username, password)
+		return s
+	except:
+		f = open("ERROR_LOG.txt","a+")
+		f.write('Error: Could not setup SMTP connection, will retry in a minute')
+		return None
 
 def getCredentials(path):
 	'''
@@ -46,9 +64,12 @@ def getCredentials(path):
 		json_data = json.loads(json_str)
 		return json_data["username"], json_data["password"], True
 	except:
+		f = open("ERROR_LOG.txt","a+")
+		f.write('Error: JSON email credentials were invalid. Will not send pictures\n')
+		f.close()
 		return "","", False
 
-def formatMessage(sender, reciever, subject, files):
+def formatMessage(sender, reciever, files, subject = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")):
 	'''
 	formats an email message to send by SMTP server
 	
@@ -73,18 +94,56 @@ def formatMessage(sender, reciever, subject, files):
 			msg.attach(part)
 	return msg
 
-username, password, success = getCredentials(path)
+def sendAll(sender, reciever, file_paths, server):
+	'''
+	Attempts to send all files located at the paths in file_paths via email
+	
+	sender: the email account sending the message
+	reciever: the email account receiveing the message
+	file_paths: a list of (str) paths to files that need to be sent
+	'''
+	for file_path in file_paths:
+		msg = formatMessage(sender, reciever, [file_path])
+		try:
+			server.send_message(msg)
+			os.remove(file_path)
+			del msg
+		except:
+			del msg
+			f = open("ERROR_LOG.txt","a+")
+			f.write('Error: Could not send some pictures.\n')
+			f.write('\tDate: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
+			f.write('\tConnected to Internet: ' + str(have_internet()) + '\n')
+			f.close()
+			return False
+	return True
+		
+if __name__ == '__main__':
+	receiver = 'BerginReciever@gmail.com'
 
-if success:
+	#GMAIL TO GMAIL EXCHANGE
+	#host_address = "aspmx.l.google.com"
+	#port_number = 25
 
-	server = setup(host_address, port_number, username, password)
-	files = ['angle/G0011576.JPG', 'angle/G0011577.JPG']
-	msg = formatMessage(username, receiver, 'success', files)
+	#GMAIL TO GENERAL EXCHANGE (SMTP TLS)
+	host_address = "smtp.gmail.com"
+	port_number = 587
+
+	path = "berginSenderCredentials.json"
+
+	username, password, success = getCredentials(path)
+
+	if success:
+
+		server = setupSMTP(host_address, port_number, username, password)
+		files = ['angle/G0011576.JPG', 'angle/G0011577.JPG']
+		msg = formatMessage(username, receiver, files)
 	
 
-	# send the message via the server set up earlier.
-	server.send_message(msg)
-	del msg
+		# send the message via the server set up earlier.
+		server.send_message(msg)
+		del msg
 
-	# Terminate the SMTP session and close the connection
-	server.quit()
+		# Terminate the SMTP session and close the connection
+		server.quit()
+		
