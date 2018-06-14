@@ -13,6 +13,7 @@ from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
 from email import encoders
 import datetime
+import http.client
 
 
 #this function from:
@@ -21,7 +22,7 @@ def have_internet():
     '''
     Returns True if the computer is connected to internet, else False
     '''
-    conn = httplib.HTTPConnection("www.google.com", timeout=5)
+    conn = http.client.HTTPConnection("www.google.com", timeout=5)
     try:
         conn.request("HEAD", "/")
         conn.close()
@@ -69,13 +70,13 @@ def getCredentials(path):
         f.close()
         return "","", False
 
-def formatMessage(sender, reciever, files, subject = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")):
+def formatMessage(sender, receiver, files, subject = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")):
     '''
     formats an email message to send by SMTP server
     
     Parameters
     sender: the email account sending the message
-    reciever: the email account receiveing the message
+    receiver: the email account receiveing the message
     subject: the subject of the email
     files: a list of (str) paths to files that need to be attached
     '''
@@ -94,19 +95,20 @@ def formatMessage(sender, reciever, files, subject = datetime.datetime.now().str
             msg.attach(part)
     return msg
 
-def sendAll(sender, reciever, file_paths, server):
+def sendAll(sender, receiver, file_paths, server, delete_sent = True):
     '''
     Attempts to send all files located at the paths in file_paths via email
     
     sender: the email account sending the message
-    reciever: the email account receiveing the message
+    receiver: the email account receiveing the message
     file_paths: a list of (str) paths to files that need to be sent
     '''
     for file_path in file_paths:
-        msg = formatMessage(sender, reciever, [file_path])
+        msg = formatMessage(sender, receiver, [file_path])
         try:
             server.send_message(msg)
-            os.remove(file_path)
+            if delete_sent:
+                os.remove(file_path)
             del msg
         except:
             del msg
@@ -119,7 +121,7 @@ def sendAll(sender, reciever, file_paths, server):
     return True
         
 if __name__ == '__main__':
-    receiver = 'BerginReciever@gmail.com'
+    receiver = 'Berginreceiver@gmail.com'
 
     #GMAIL TO GMAIL EXCHANGE
     #host_address = "aspmx.l.google.com"
@@ -138,7 +140,7 @@ if __name__ == '__main__':
         server = setupSMTP(host_address, port_number, username, password)
         to_send = os.listdir('angle')
         to_send = ['angle/'+file_name for file_name in to_send]
-       	sent_all = sendAll(username, receiver, to_send, server)
+       	sent_all = sendAll(username, receiver, to_send, server, delete_sent = False)
         
         print("It is {} that all pictures were sent".format(str(sent_all)))
         server.quit()
