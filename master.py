@@ -47,7 +47,7 @@ def sending_run(username, password, receiver, send_folder):
             seconds_until_next_call = 30
     else:
         seconds_until_next_call = 30
-    t = threading.Timer(60.0, sending_run, username, receiver)
+    t = threading.Timer(seconds_until_next_call, sending_run, (username, password, receiver, send_folder))
     t.daemon = True #finish when main finishes
     t.start()
         
