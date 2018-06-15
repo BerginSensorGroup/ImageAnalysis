@@ -1,8 +1,10 @@
 import PYemail
 import camera_controller
+from picamera import PiCamera
 import threading
+import datetime
 
-def camera_run(camera, save_folder, picture_number_file):
+def camera_run(camera, save_folder, stamp_folder, picture_number_file):
     '''
     Takes a picture every 60 seconds
     
@@ -14,11 +16,20 @@ def camera_run(camera, save_folder, picture_number_file):
         the number is maintained in the case of power loss
     '''
     camera_controller.takePicture(camera, save_folder, picture_number_file)
-    t = threading.Timer(60.0, camera_run, camera, save_folder, picture_number_file)
+    now = datetime.datetime.now()
+    time_stamp_path = stamp_folder + ('{}.txt'.format(pic_num))
+    time_stamp_file = open(time_stamp_path, 'w+')
+    #Either store the current time for the picture or declare that we do not know the time
+    if now.year < 2018:
+        time_stamp_file.write('NO TIME (time unknown when picture was taken)')
+    else:
+        time_stamp_file.write(now.strftime("%I:%M%p on %B %d, %Y"))
+    time_stamp_file.close()
+    t = threading.Timer(60.0, camera_run, (camera, save_folder, stamp_folder, picture_number_file))
     t.daemon = True #finish when main finishes
     t.start()
 
-def sending_run(username, password, receiver, send_folder):
+def sending_run(username, password, receiver, send_folder, stamp_folder):
     '''
     Attempts to send all the files in send_folder via email
     If successful function repeats after 60 seconds
@@ -33,11 +44,14 @@ def sending_run(username, password, receiver, send_folder):
 
     to_send = os.listdir(send_folder)
     to_send = [send_folder + file_name for file_name in to_send]
+    stamp_paths = os.listdir(send_folder)
+    stamp_paths = [stamp_folder + file_name for file_name in stamp_paths]
+    
     seconds_until_next_call = 0
     if PYemail.have_internet():
         server = PYemail.setupSMTP(host_address, port_number, username, password)
         if server != None:
-            sent_all = PYemail.sendAll(username, receiver, to_send, server)
+            sent_all = PYemail.sendAll(username, receiver, to_send, stamp_paths, server)
             if sent_all:
                 seconds_until_next_call = 60
                 server.quit()
@@ -51,14 +65,15 @@ def sending_run(username, password, receiver, send_folder):
     else:
         seconds_until_next_call = 30
         #Didn't send any: did not have internet
-    t = threading.Timer(seconds_until_next_call, sending_run, (username, password, receiver, send_folder))
+    t = threading.Timer(seconds_until_next_call, sending_run, (username, password, receiver, send_folder, stamp_folder))
     t.daemon = True #finish when main finishes
     t.start()
         
 if __name__ == '__main__':
     ##CONSTANTS
     
-    save_folder = '/home/pi/Documents/facial_detection/unsent_pictures'
+    save_folder = '/home/pi/Documents/facial_detection/unsent_pictures/'
+    stamp_folder = '/home/pi/Documents/facial_detection/unsent_stamps/'
     picture_number_file = '/home/pi/Documents/facial_detection/current_picture_number.txt'
     
     credentials_path = "berginSenderCredentials.json"
@@ -73,10 +88,10 @@ if __name__ == '__main__':
     
     username, password, credentials_OK = PYemail.getCredentials(credentials_path)
     
-    camera_run(camera, save_folder, picture_number_file)
+    camera_run(camera, save_folder, stamp_folder, picture_number_file)
     
     if credentials_OK:
-        sending_run(username, password, receiver, save_folder)
+        sending_run(username, password, receiver, save_folder, stamp_folder)
     
     while True:
         pass
