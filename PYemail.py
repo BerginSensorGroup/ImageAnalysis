@@ -96,7 +96,7 @@ def formatMessage(sender, receiver, files, subject = datetime.datetime.now().str
     
     return msg
 
-def get_stamp_and_stamp_path(stamp_paths, file_path){
+def get_stamp_and_stamp_path(stamp_paths, file_path):
     '''
     Given the file path, finds the corressponding time stamp in the provided stamp_paths list
     Assumes that the file path ends in /<NUMBER>.ext where <NUMBER> is the desired stamp file number
@@ -112,8 +112,8 @@ def get_stamp_and_stamp_path(stamp_paths, file_path){
         file_number = int(file_path[last_slash+1:ext_loc])
         
         if stamp_number == file_number:
-            with f as open(stamp_file, 'r'):
-                return (f.read(), stamp_file)
+            with open(stamp_path, 'r') as f:
+                return (f.read(), stamp_path)
     
     return ('NO TIME (could not find stamp file)', 'THIS_IS_NOT_A_FILE_PATH')
 
@@ -135,7 +135,7 @@ def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = Tru
                 os.remove(file_path)
                 #also try to delete stamp file
                 if subject != 'NO TIME (could not find stamp file)':
-                    os.remove(stamp_file)
+                    os.remove(stamp_path)
             del msg
         except smtplib.SMTPServerDisconnected:
             del msg
@@ -167,7 +167,7 @@ if __name__ == '__main__':
         server = setupSMTP(host_address, port_number, username, password)
         to_send = os.listdir('angle')
         to_send = ['angle/'+file_name for file_name in to_send]
-           sent_all = sendAll(username, receiver, to_send, server, delete_sent = False)
+        sent_all = sendAll(username, receiver, to_send, server, delete_sent = False)
         
         print("It is {} that all pictures were sent".format(str(sent_all)))
         server.quit()
