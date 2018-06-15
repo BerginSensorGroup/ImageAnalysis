@@ -3,12 +3,14 @@ from picamera import PiCamera
 from time import sleep
 
 def takePicture(camera, save_folder, number_file):
-	'''
+	'''	
 	Parameters
 	camera: the camera instance with which to take pictures
 	number_file: a file that holds the current picture number so no two pictures
 		will ever have the same name. A file is used instead of a variable so
 		the number is maintained in the case of power loss
+		
+	Returns the picture number that was saved
 	'''
 	pic_num = 0
 	try:
@@ -18,8 +20,10 @@ def takePicture(camera, save_folder, number_file):
 	except IOError:
 		pass
 		
-	camera.capture(save_folder + ('{}.jpg',format(pic_num)))
+	camera.capture(save_folder + ('{}.jpg'.format(pic_num)))
 	pic_num += 1
 	
 	file = open(number_file, 'w+')
 	file.write(str(pic_num))
+	
+	return pic_num
