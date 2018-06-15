@@ -40,13 +40,17 @@ def sending_run(username, password, receiver, send_folder):
             sent_all = PYemail.sendAll(username, receiver, to_send, server)
             if sent_all:
                 seconds_until_next_call = 60
+                server.quit()
+                #sent all files
             else:
                 seconds_until_next_call = 30
-            server.quit()
+                #sent some but not all
         else:
             seconds_until_next_call = 30
+            #Didn't send any: had internet but could not setup SMTP
     else:
         seconds_until_next_call = 30
+        #Didn't send any: did not have internet
     t = threading.Timer(seconds_until_next_call, sending_run, (username, password, receiver, send_folder))
     t.daemon = True #finish when main finishes
     t.start()
