@@ -3,6 +3,7 @@ import camera_controller
 from picamera import PiCamera
 import threading
 import datetime
+import os
 
 def camera_run(camera, save_folder, stamp_folder, picture_number_file):
     '''
@@ -15,7 +16,7 @@ def camera_run(camera, save_folder, stamp_folder, picture_number_file):
         will ever have the same name. A file is used instead of a variable so
         the number is maintained in the case of power loss
     '''
-    camera_controller.takePicture(camera, save_folder, picture_number_file)
+    pic_num = camera_controller.takePicture(camera, save_folder, picture_number_file)
     now = datetime.datetime.now()
     time_stamp_path = stamp_folder + ('{}.txt'.format(pic_num))
     time_stamp_file = open(time_stamp_path, 'w+')
@@ -44,7 +45,7 @@ def sending_run(username, password, receiver, send_folder, stamp_folder):
 
     to_send = os.listdir(send_folder)
     to_send = [send_folder + file_name for file_name in to_send]
-    stamp_paths = os.listdir(send_folder)
+    stamp_paths = os.listdir(stamp_folder)
     stamp_paths = [stamp_folder + file_name for file_name in stamp_paths]
     
     seconds_until_next_call = 0
