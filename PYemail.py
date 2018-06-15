@@ -93,9 +93,31 @@ def formatMessage(sender, receiver, files, subject = datetime.datetime.now().str
             encoders.encode_base64(part)
             part.add_header('Content-Disposition','attachment; filename="{}"'.format(op.basename(path)))
             msg.attach(part)
+    
     return msg
 
-def sendAll(sender, receiver, file_paths, server, delete_sent = True):
+def get_stamp_and_stamp_path(stamp_paths, file_path){
+    '''
+    Given the file path, finds the corressponding time stamp in the provided stamp_paths list
+    Assumes that the file path ends in /<NUMBER>.ext where <NUMBER> is the desired stamp file number
+    '''
+    
+    for stamp_path in stamp_paths:
+        ext_loc = stamp_path.find('.')
+        last_slash = stamp_path.rfind('/')
+        stamp_number = int(stamp_path[last_slash+1:ext_loc])
+        
+        ext_loc = file_path.find('.')
+        last_slash = file_path.rfind('/')
+        file_number = int(file_path[last_slash+1:ext_loc])
+        
+        if stamp_number == file_number:
+            with f as open(stamp_file, 'r'):
+                return (f.read(), stamp_file)
+    
+    return ('NO TIME (could not find stamp file)', 'THIS_IS_NOT_A_FILE_PATH')
+
+def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = True):
     '''
     Attempts to send all files located at the paths in file_paths via email
     
@@ -105,11 +127,15 @@ def sendAll(sender, receiver, file_paths, server, delete_sent = True):
     delete_sent: should we delete the file after it is successfully emailed
     '''
     for file_path in file_paths:
-        msg = formatMessage(sender, receiver, [file_path])
+        subject, stamp_path = get_stamp_and_stamp_path(stamp_paths, file_path)
+        msg = formatMessage(sender, receiver, [file_path], subject)
         try:
             server.send_message(msg)
             if delete_sent:
                 os.remove(file_path)
+                #also try to delete stamp file
+                if subject != 'NO TIME (could not find stamp file)':
+                    os.remove(stamp_file)
             del msg
         except smtplib.SMTPServerDisconnected:
             del msg
@@ -141,7 +167,7 @@ if __name__ == '__main__':
         server = setupSMTP(host_address, port_number, username, password)
         to_send = os.listdir('angle')
         to_send = ['angle/'+file_name for file_name in to_send]
-       	sent_all = sendAll(username, receiver, to_send, server, delete_sent = False)
+           sent_all = sendAll(username, receiver, to_send, server, delete_sent = False)
         
         print("It is {} that all pictures were sent".format(str(sent_all)))
         server.quit()
