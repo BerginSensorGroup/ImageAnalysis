@@ -42,11 +42,11 @@ def setupSMTP(host_address, port_number, username, password):
     password: the password to the email account of the sender
     '''
     try:
-        s = smtplib.SMTP(host= host_address, port= port_number)
+        s = smtplib.SMTP(host= host_address, port= port_number, timeout = 30)
         s.starttls()
         s.login(username, password)
         return s
-    except:
+    except smtplib.SMTPConnectError:
         f = open("ERROR_LOG.txt","a+")
         f.write('Error: Could not setup SMTP connection, will retry in a minute')
         return None
@@ -64,9 +64,9 @@ def getCredentials(path):
         json_str = json_file.read()
         json_data = json.loads(json_str)
         return json_data["username"], json_data["password"], True
-    except:
+    except IOError:
         f = open("ERROR_LOG.txt","a+")
-        f.write('Error: JSON email credentials were invalid. Will not send pictures\n')
+        f.write('Error: JSON path was invalid. Will not send pictures\n')
         f.close()
         return "","", False
 
@@ -102,6 +102,7 @@ def sendAll(sender, receiver, file_paths, server, delete_sent = True):
     sender: the email account sending the message
     receiver: the email account receiveing the message
     file_paths: a list of (str) paths to files that need to be sent
+    delete_sent: should we delete the file after it is successfully emailed
     '''
     for file_path in file_paths:
         msg = formatMessage(sender, receiver, [file_path])
@@ -110,7 +111,7 @@ def sendAll(sender, receiver, file_paths, server, delete_sent = True):
             if delete_sent:
                 os.remove(file_path)
             del msg
-        except:
+        except smtplib.SMTPServerDisconnected:
             del msg
             f = open("ERROR_LOG.txt","a+")
             f.write('Error: Could not send some pictures.\n')
@@ -144,4 +145,3 @@ if __name__ == '__main__':
         
         print("It is {} that all pictures were sent".format(str(sent_all)))
         server.quit()
-        
