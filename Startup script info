@@ -1,0 +1,19 @@
+Follow the insturctions at:
+
+http://www.instructables.com/id/Raspberry-Pi-Launch-Python-script-on-startup/
+
+to get launcher.sh to run at start up. This script will run the python3 file master.py in the background.
+In order to kill master.py on the command line, first enter:
+
+ps -A
+
+on the command line to list the running processes. Locate the pid associated with python3 in the list of processes returned.
+Finally enter:
+
+sudo kill <PID>
+
+to kill the program. If this fails enter:
+
+sudo kill -9 <PID> 
+
+to force kill the program.
