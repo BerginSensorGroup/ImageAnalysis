@@ -13,10 +13,7 @@ from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
 from email import encoders
 import datetime
-<<<<<<< HEAD
-=======
 import http.client
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
 
 
 #this function from:
@@ -25,11 +22,7 @@ def have_internet():
     '''
     Returns True if the computer is connected to internet, else False
     '''
-<<<<<<< HEAD
-    conn = httplib.HTTPConnection("www.google.com", timeout=5)
-=======
     conn = http.client.HTTPConnection("www.google.com", timeout=5)
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
     try:
         conn.request("HEAD", "/")
         conn.close()
@@ -49,19 +42,11 @@ def setupSMTP(host_address, port_number, username, password):
     password: the password to the email account of the sender
     '''
     try:
-<<<<<<< HEAD
-        s = smtplib.SMTP(host= host_address, port= port_number)
-        s.starttls()
-        s.login(username, password)
-        return s
-    except:
-=======
         s = smtplib.SMTP(host= host_address, port= port_number, timeout = 30)
         s.starttls()
         s.login(username, password)
         return s
     except smtplib.SMTPConnectError:
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
         f = open("ERROR_LOG.txt","a+")
         f.write('Error: Could not setup SMTP connection, will retry in a minute')
         return None
@@ -79,15 +64,6 @@ def getCredentials(path):
         json_str = json_file.read()
         json_data = json.loads(json_str)
         return json_data["username"], json_data["password"], True
-<<<<<<< HEAD
-    except:
-        f = open("ERROR_LOG.txt","a+")
-        f.write('Error: JSON email credentials were invalid. Will not send pictures\n')
-        f.close()
-        return "","", False
-
-def formatMessage(sender, reciever, files, subject = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")):
-=======
     except IOError:
         f = open("ERROR_LOG.txt","a+")
         f.write('Error: JSON path was invalid. Will not send pictures\n')
@@ -95,17 +71,12 @@ def formatMessage(sender, reciever, files, subject = datetime.datetime.now().str
         return "","", False
 
 def formatMessage(sender, receiver, files, subject = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")):
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
     '''
     formats an email message to send by SMTP server
     
     Parameters
     sender: the email account sending the message
-<<<<<<< HEAD
-    reciever: the email account receiveing the message
-=======
     receiver: the email account receiveing the message
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
     subject: the subject of the email
     files: a list of (str) paths to files that need to be attached
     '''
@@ -122,11 +93,6 @@ def formatMessage(sender, receiver, files, subject = datetime.datetime.now().str
             encoders.encode_base64(part)
             part.add_header('Content-Disposition','attachment; filename="{}"'.format(op.basename(path)))
             msg.attach(part)
-<<<<<<< HEAD
-    return msg
-
-def sendAll(sender, reciever, file_paths, server):
-=======
     
     return msg
 
@@ -152,23 +118,10 @@ def get_stamp_and_stamp_path(stamp_paths, file_path):
     return ('NO TIME (could not find stamp file)', 'THIS_IS_NOT_A_FILE_PATH')
 
 def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = True):
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
     '''
     Attempts to send all files located at the paths in file_paths via email
     
     sender: the email account sending the message
-<<<<<<< HEAD
-    reciever: the email account receiveing the message
-    file_paths: a list of (str) paths to files that need to be sent
-    '''
-    for file_path in file_paths:
-        msg = formatMessage(sender, reciever, [file_path])
-        try:
-            server.send_message(msg)
-            os.remove(file_path)
-            del msg
-        except:
-=======
     receiver: the email account receiveing the message
     file_paths: a list of (str) paths to files that need to be sent
     delete_sent: should we delete the file after it is successfully emailed
@@ -185,7 +138,6 @@ def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = Tru
                     os.remove(stamp_path)
             del msg
         except smtplib.SMTPServerDisconnected:
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
             del msg
             f = open("ERROR_LOG.txt","a+")
             f.write('Error: Could not send some pictures.\n')
@@ -196,11 +148,7 @@ def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = Tru
     return True
         
 if __name__ == '__main__':
-<<<<<<< HEAD
-    receiver = 'BerginReciever@gmail.com'
-=======
     receiver = 'Berginreceiver@gmail.com'
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
 
     #GMAIL TO GMAIL EXCHANGE
     #host_address = "aspmx.l.google.com"
@@ -219,15 +167,7 @@ if __name__ == '__main__':
         server = setupSMTP(host_address, port_number, username, password)
         to_send = os.listdir('angle')
         to_send = ['angle/'+file_name for file_name in to_send]
-<<<<<<< HEAD
-       	sent_all = sendAll(username, receiver, to_send, server)
-        
-        print("It is {} that all pictures were sent".format(str(sent_all)))
-        server.quit()
-        
-=======
         sent_all = sendAll(username, receiver, to_send, server, delete_sent = False)
         
         print("It is {} that all pictures were sent".format(str(sent_all)))
         server.quit()
->>>>>>> b05acd6ce0a5b80aacbe25a35693791a0e5e0238
