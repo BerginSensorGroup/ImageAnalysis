@@ -3,6 +3,7 @@ import camera_controller
 from picamera import PiCamera
 import threading
 import datetime
+from time import sleep
 import os
 
 def camera_run(camera, save_folder, stamp_folder, picture_number_file):
@@ -16,16 +17,8 @@ def camera_run(camera, save_folder, stamp_folder, picture_number_file):
         will ever have the same name. A file is used instead of a variable so
         the number is maintained in the case of power loss
     '''
-    pic_num = camera_controller.takePicture(camera, save_folder, picture_number_file)
-    now = datetime.datetime.now()
-    time_stamp_path = stamp_folder + ('{}.txt'.format(pic_num))
-    time_stamp_file = open(time_stamp_path, 'w+')
-    #Either store the current time for the picture or declare that we do not know the time
-    if now.year < 2018:
-        time_stamp_file.write('NO TIME (time unknown when picture was taken)')
-    else:
-        time_stamp_file.write(now.strftime("%I:%M%p on %B %d, %Y"))
-    time_stamp_file.close()
+    camera_controller.takePicture(camera, save_folder, stamp_folder, picture_number_file)
+    
     t = threading.Timer(60.0, camera_run, (camera, save_folder, stamp_folder, picture_number_file))
     t.daemon = True #finish when main finishes
     t.start()
@@ -77,7 +70,7 @@ if __name__ == '__main__':
     stamp_folder = '/home/pi/Documents/facial_detection/unsent_stamps/'
     picture_number_file = '/home/pi/Documents/facial_detection/current_picture_number.txt'
     
-    credentials_path = "berginSenderCredentials.json"
+    credentials_path = "../Credentials/berginSenderCredentials.json"
     receiver = 'BerginReciever@gmail.com'
     #GMAIL TO GENERAL EXCHANGE (SMTP TLS)
     host_address = "smtp.gmail.com"
@@ -89,6 +82,10 @@ if __name__ == '__main__':
     
     username, password, credentials_OK = PYemail.getCredentials(credentials_path)
     
+    #wait 15 seconds on startup for wifi to connect
+    if not PYemail.have_internet():
+        sleep(15)
+    
     camera_run(camera, save_folder, stamp_folder, picture_number_file)
     
     if credentials_OK:
@@ -96,3 +93,4 @@ if __name__ == '__main__':
     
     while True:
         pass
+
