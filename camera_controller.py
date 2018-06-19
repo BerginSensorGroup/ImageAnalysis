@@ -1,7 +1,7 @@
 from picamera import PiCamera
 import datetime
 
-def takePicture(camera, save_folder, stamp_folder, number_file):
+def takePicture(camera, save_folder, stamp_folder, number_file, name):
     '''
     Parameters
     camera: the camera instance with which to take pictures
@@ -23,7 +23,7 @@ def takePicture(camera, save_folder, stamp_folder, number_file):
     
     now = datetime.datetime.now()    
         
-    camera.capture(save_folder + ('{}.jpg'.format(pic_num)))
+    camera.capture(save_folder + ('{}_{}.jpg'.format(name,pic_num)))
     
     time_stamp_path = stamp_folder + ('{}.txt'.format(pic_num))
     time_stamp_file = open(time_stamp_path, 'w+')
@@ -32,7 +32,7 @@ def takePicture(camera, save_folder, stamp_folder, number_file):
     if now.year < 2018:
         time_stamp_file.write('NO TIME (time unknown when picture was taken)')
     else:
-        time_stamp_file.write(now.strftime("%I:%M%p on %B %d, %Y"))
+        time_stamp_file.write(now.strftime("%I_%M%p on %B %d, %Y"))
     time_stamp_file.close()
     
     #finish the function by updating the picture number
