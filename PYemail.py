@@ -99,16 +99,19 @@ def formatMessage(sender, receiver, files, subject = datetime.datetime.now().str
 def get_stamp_and_stamp_path(stamp_paths, file_path):
     '''
     Given the file path, finds the corressponding time stamp in the provided stamp_paths list
-    Assumes that the file path ends in /<NUMBER>.ext where <NUMBER> is the desired stamp file number
+    Assumes that each stamp_path ends in /<NUMBER>.ext where <NUMBER> is the desired stamp file number
+    Assumes that the file path ends in /<TEXT>_<NUMBER>.ext where <NUMBER> is the desired stamp file number
     '''
     
     for stamp_path in stamp_paths:
         ext_loc = stamp_path.find('.')
+        #the ID number will be after the final '/'
         last_slash = stamp_path.rfind('/')
         stamp_number = int(stamp_path[last_slash+1:ext_loc])
         
         ext_loc = file_path.find('.')
-        last_slash = file_path.rfind('/')
+        #the ID number will be after the final '_'
+        last_slash = file_path.rfind('_')
         file_number = int(file_path[last_slash+1:ext_loc])
         
         if stamp_number == file_number:
@@ -146,28 +149,3 @@ def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = Tru
             f.close()
             return False
     return True
-        
-if __name__ == '__main__':
-    receiver = 'Berginreceiver@gmail.com'
-
-    #GMAIL TO GMAIL EXCHANGE
-    #host_address = "aspmx.l.google.com"
-    #port_number = 25
-
-    #GMAIL TO GENERAL EXCHANGE (SMTP TLS)
-    host_address = "smtp.gmail.com"
-    port_number = 587
-
-    path = "berginSenderCredentials.json"
-
-    username, password, success = getCredentials(path)
-
-    if success:
-
-        server = setupSMTP(host_address, port_number, username, password)
-        to_send = os.listdir('angle')
-        to_send = ['angle/'+file_name for file_name in to_send]
-        sent_all = sendAll(username, receiver, to_send, server, delete_sent = False)
-        
-        print("It is {} that all pictures were sent".format(str(sent_all)))
-        server.quit()
