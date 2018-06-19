@@ -66,7 +66,15 @@ def sending_run(username, password, receiver, send_folder, stamp_folder):
 if __name__ == '__main__':
     ##CONSTANTS
     #unique name of this Pi
-    name = 'Vanquisher'
+    name_path = 'Name.txt'
+    name = 'NAME NOT AVAILABLE'
+    try:
+        name_file = open(name_path, 'r')
+        name = name_file.read()
+        name_file.close()
+    except IOError:
+        #if the name file does not exist, just continue without a name
+        pass
     
     save_folder = '/home/pi/Documents/facial_detection/unsent_pictures/'
     stamp_folder = '/home/pi/Documents/facial_detection/unsent_stamps/'
