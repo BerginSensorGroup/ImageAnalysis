@@ -5,6 +5,8 @@ import threading
 import datetime
 from time import sleep
 import os
+import sys
+import traceback
 
 def camera_run(camera, save_folder, stamp_folder, picture_number_file, name):
     '''
@@ -64,42 +66,55 @@ def sending_run(username, password, receiver, send_folder, stamp_folder):
     t.start()
         
 if __name__ == '__main__':
-    ##CONSTANTS
-    #unique name of this Pi
-    name_path = 'Name.txt'
-    name = 'NAME NOT AVAILABLE'
     try:
-        name_file = open(name_path, 'r')
-        name = name_file.read()
-        name_file.close()
-    except IOError:
-        #if the name file does not exist, just continue without a name
-        pass
-    
-    save_folder = '/home/pi/Documents/facial_detection/unsent_pictures/'
-    stamp_folder = '/home/pi/Documents/facial_detection/unsent_stamps/'
-    picture_number_file = '/home/pi/Documents/facial_detection/current_picture_number.txt'
-    
-    credentials_path = "../Credentials/berginSenderCredentials.json"
-    receiver = 'BerginReciever@gmail.com'
-    #GMAIL TO GENERAL EXCHANGE (SMTP TLS)
-    host_address = "smtp.gmail.com"
-    port_number = 587
-    
-    ##END CONSTANTS
-    
-    camera = PiCamera()
-    
-    username, password, credentials_OK = PYemail.getCredentials(credentials_path)
-    
-    #wait 15 seconds on startup for wifi to connect
-    if not PYemail.have_internet():
-        sleep(15)
-    
-    camera_run(camera, save_folder, stamp_folder, picture_number_file, name)
-    
-    if credentials_OK:
-        sending_run(username, password, receiver, save_folder, stamp_folder)
-    
-    while True:
-        pass
+        ##CONSTANTS
+        #path of termination log, must be the same as in on_termination.py
+        termination_log_path = 'TERMINATION_LOG.txt'
+        
+        #unique name of this Pi
+        name_path = 'Name.txt'
+        name = 'NAME NOT AVAILABLE'
+        try:
+            name_file = open(name_path, 'r')
+            name = name_file.read()
+            name_file.close()
+        except IOError:
+            #if the name file does not exist, just continue without a name
+            pass
+        
+        save_folder = '/home/pi/Documents/facial_detection/unsent_pictures/'
+        stamp_folder = '/home/pi/Documents/facial_detection/unsent_stamps/'
+        picture_number_file = '/home/pi/Documents/facial_detection/current_picture_number.txt'
+        
+        credentials_path = "../Credentials/berginSenderCredentials.json"
+        receiver = 'BerginReciever@gmail.com'
+        #GMAIL TO GENERAL EXCHANGE (SMTP TLS)
+        host_address = "smtp.gmail.com"
+        port_number = 587
+        
+        ##END CONSTANTS
+        
+        camera = PiCamera()
+        
+        username, password, credentials_OK = PYemail.getCredentials(credentials_path)
+        
+        #wait 15 seconds on startup for wifi to connect
+        if not PYemail.have_internet():
+            sleep(15)
+        
+        camera_run(camera, save_folder, stamp_folder, picture_number_file, name)
+        
+        if credentials_OK:
+            sending_run(username, password, receiver, save_folder, stamp_folder)
+        
+        while True:
+            pass
+    except:
+		#Record the reason why the program terminated
+        #exception_type, exception_value, traceback = sys.exc_info()
+        termination_log = open(termination_log_path, 'a+')
+        termination_log.write('Date: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
+        termination_log.write("\tConnected to internet: " + str(PYemail.have_internet()) + '\n')
+        termination_log.write(traceback.format_exc())
+        termination_log.write("\n\n\n\n\n")
+        termination_log.close()
