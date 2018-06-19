@@ -5,4 +5,5 @@
 cd /
 cd home/pi/Documents/facial_detection
 sudo python3 master.py
+sudo python3 on_termination.py
 cd /
