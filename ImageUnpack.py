@@ -27,7 +27,7 @@ if __name__ == '__main__':
 		sys.exit()
 
 	imapSession.select('"[Gmail]/All Mail"')
-	typ, data = imapSession.search(None, '(UNSEEN)')
+	typ, data = imapSession.search(None, '(FROM "berginsender@gmail.com")')
 	if typ != 'OK':
 		print('Error searching Inbox.')
 		sys.exit()
