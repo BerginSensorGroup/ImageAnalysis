@@ -32,7 +32,7 @@ def takePicture(camera, save_folder, stamp_folder, number_file, name):
     if now.year < 2018:
         time_stamp_file.write('NO TIME (time unknown when picture was taken)')
     else:
-        time_stamp_file.write(now.strftime("%I_%M%p on %B %d, %Y"))
+        time_stamp_file.write(now.strftime("%I_%M%p on %B %d %Y"))
     time_stamp_file.close()
     
     #finish the function by updating the picture number
