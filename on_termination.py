@@ -20,6 +20,8 @@ if __name__ == '__main__':
 	continue executing later and we need to know that the sensor will not
 	take data until it is serviced.
 	'''
+	#path of termination log, must be the same as in master.py
+	termination_log_path = 'TERMINATION_LOG.txt'
 	
 	#unique name of this Pi
 	name_path = 'Name.txt'
@@ -49,5 +51,5 @@ if __name__ == '__main__':
 	server = PYemail.setupSMTP(host_address, port_number, username, password)
 	
 	for warning_receiver in warning_receivers:
-		msg = PYemail.formatMessage(username, warning_receiver, [], subject = "Warning for {}: master.py terminated and will not resume".format(name))
+		msg = PYemail.formatMessage(username, warning_receiver, [termination_log_path], subject = "Warning for {}: master.py terminated and will not resume".format(name))
 		server.send_message(msg)
