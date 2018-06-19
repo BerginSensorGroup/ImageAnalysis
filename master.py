@@ -6,7 +6,7 @@ import datetime
 from time import sleep
 import os
 
-def camera_run(camera, save_folder, stamp_folder, picture_number_file):
+def camera_run(camera, save_folder, stamp_folder, picture_number_file, name):
     '''
     Takes a picture every 60 seconds
     
@@ -17,9 +17,9 @@ def camera_run(camera, save_folder, stamp_folder, picture_number_file):
         will ever have the same name. A file is used instead of a variable so
         the number is maintained in the case of power loss
     '''
-    camera_controller.takePicture(camera, save_folder, stamp_folder, picture_number_file)
+    camera_controller.takePicture(camera, save_folder, stamp_folder, picture_number_file, name)
     
-    t = threading.Timer(60.0, camera_run, (camera, save_folder, stamp_folder, picture_number_file))
+    t = threading.Timer(60.0, camera_run, (camera, save_folder, stamp_folder, picture_number_file, name))
     t.daemon = True #finish when main finishes
     t.start()
 
@@ -65,6 +65,8 @@ def sending_run(username, password, receiver, send_folder, stamp_folder):
         
 if __name__ == '__main__':
     ##CONSTANTS
+    #unique name of this Pi
+    name = 'Vanquisher'
     
     save_folder = '/home/pi/Documents/facial_detection/unsent_pictures/'
     stamp_folder = '/home/pi/Documents/facial_detection/unsent_stamps/'
@@ -86,11 +88,10 @@ if __name__ == '__main__':
     if not PYemail.have_internet():
         sleep(15)
     
-    camera_run(camera, save_folder, stamp_folder, picture_number_file)
+    camera_run(camera, save_folder, stamp_folder, picture_number_file, name)
     
     if credentials_OK:
         sending_run(username, password, receiver, save_folder, stamp_folder)
     
     while True:
         pass
-
