@@ -8,9 +8,9 @@ import os
 import sys
 import traceback
 
-def camera_run(camera, save_folder, stamp_folder, picture_number_file, name):
+def camera_run(camera, save_folder, stamp_folder, picture_number_file, name, call_freq = 10.0):
     '''
-    Takes a picture every 60 seconds
+    Takes a picture every call_freq seconds
     
     Parameters
     camera: the camera instance with which to take pictures
@@ -21,7 +21,7 @@ def camera_run(camera, save_folder, stamp_folder, picture_number_file, name):
     '''
     camera_controller.takePicture(camera, save_folder, stamp_folder, picture_number_file, name)
     
-    t = threading.Timer(60.0, camera_run, (camera, save_folder, stamp_folder, picture_number_file, name))
+    t = threading.Timer(call_freq, camera_run, (camera, save_folder, stamp_folder, picture_number_file, name))
     t.daemon = True #finish when main finishes
     t.start()
 
