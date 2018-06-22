@@ -11,3 +11,4 @@ Error: JSON email credentials were invalid. Will not send pictures
 Error: JSON email credentials were invalid. Will not send pictures
 Error: JSON email credentials were invalid. Will not send pictures
 Error: JSON email credentials were invalid. Will not send pictures
+Error: JSON path was invalid. Will not send pictures

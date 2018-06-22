@@ -71,7 +71,7 @@ def unpack(username, password, saveFolder, sender_email = 'berginsender@gmail.co
 
 if __name__ == '__main__':
 	saveFolder = 'attachments'
-	path = "../Credentials/berginRecieverCredentials.json"
+	path = "../berginRecieverCredentials.json"
 	username, password, success = getCredentials(path)
 	if success:
 		unpack(username, password, saveFolder)
