@@ -7,6 +7,7 @@ from time import sleep
 import os
 import sys
 import traceback
+from disk_space import have_more_space_than
 
 def camera_run(camera, save_folder, stamp_folder, picture_number_file, name, call_freq = 10.0):
     '''
@@ -19,7 +20,9 @@ def camera_run(camera, save_folder, stamp_folder, picture_number_file, name, cal
         will ever have the same name. A file is used instead of a variable so
         the number is maintained in the case of power loss
     '''
-    camera_controller.takePicture(camera, save_folder, stamp_folder, picture_number_file, name)
+    MIN_SPACE = 100000000 #don't take a picture unless we have at least 100 MB of free space
+    if have_more_space_than(MIN_SPACE):
+        camera_controller.takePicture(camera, save_folder, stamp_folder, picture_number_file, name)
     
     t = threading.Timer(call_freq, camera_run, (camera, save_folder, stamp_folder, picture_number_file, name))
     t.daemon = True #finish when main finishes
