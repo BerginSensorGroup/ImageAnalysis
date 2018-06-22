@@ -6,13 +6,21 @@ months = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June':
 
 class Image:
 
-	def __init__(self, path, name):
-        self.name = name
+	def __init__(self, path):
         self.path = path
-
+        self.faces = []
         pathSplit = split(' ')
-        self.date = date(int(pathSplit[4][:4]), months[pathSplit[2]], int(pathSplit[3])
-        
+        self.date = date(int(pathSplit[4][:4]), months[pathSplit[2]], int(pathSplit[3]))
+        self.time.hour = path[:2]
+        self.time.minute = path[3:5]
+
+    def setFaces(self, myfaces):
+		self.faces = myfaces
+	def getFaces(self):
+		return faces
+
+
+
 
 
 

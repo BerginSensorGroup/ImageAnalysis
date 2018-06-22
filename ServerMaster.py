@@ -3,6 +3,7 @@ import os
 from InitialFaceREcognition import *
 from ImageUnpack import *
 from interpret import *
+from detect import *
 from PYemail import getCredentials
 
 
@@ -26,11 +27,21 @@ while True:
 	if len(newImages) == 0:
 		print('No new images')
 		continue
+
+	client = vision.ImageAnnotatorClient()
+
+	faceImages = []
 	
-	for x in newImages:
+	for file in newImages:
 		#Check if they have faces
 		if containsFace('attachments/' + x): 
+			newImage = Image('attachments/' + x)
 			#Run Interpret on those faces 
+			newImage.setFaces() = getFaces(file, client)
+			faceImages.append(newImage)
+#TODO: write information to from faceImages
+			
+			
 
 
 
