@@ -127,7 +127,7 @@ def sending_run_json(credentials, receiver, unsent_json_folder):
     else:
         seconds_until_next_call = 30
         #Didn't send any: did not have internet
-    t = threading.Timer(seconds_until_next_call, sending_run_json, (username, password, receiver, unsent_json_folder))
+    t = threading.Timer(seconds_until_next_call, sending_run_json, (credentials, receiver, unsent_json_folder))
     t.daemon = True #finish when main finishes
     t.start()
     
