@@ -32,7 +32,7 @@ class credential_set(object):
             self.current = 0
         return getCurrentCredentials(self)
     def getCurrentCredentials(self):
-        if len(credentials == 0):
+        if len(self.credentials == 0):
             return None
         return (self.credentials[self.current]['username'], self.credentials[self.current]['password'])
         
