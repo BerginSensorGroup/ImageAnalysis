@@ -16,6 +16,27 @@ import datetime
 import http.client
 
 
+class credential_set(object):
+    def __init__(self):
+        credentials = []
+        current = 0
+    def addCredential(self, host_address, port_number, username, password):
+        #time_expired will represent the time when the credentials were last refused
+        minDateTime = datetime.datetime(1, 1, 1, 0, 0, 0, 0)
+        credentials.append({'host_address': host_address, 'port_number': port_number, 
+              'username': username, 'password': password, 'time_expired': minDateTime})
+    def updateExpiration(self, new_expiration = datetime.datetime.now()):
+        credentials[current]['time_expired'] = new_expiration
+        current += 1
+        if current >= len(credentials):
+            current = 0
+        return getCurrentCredentials(self)
+    def getCurrentCredentials(self):
+    	if len(credentials == 0):
+    	    return None
+        return (credentials[current]['username'], credentials[current]['password'])
+        
+        
 #this function from:
 #https://stackoverflow.com/questions/3764291/checking-network-connection
 def have_internet():
@@ -48,29 +69,35 @@ def setupSMTP(host_address, port_number, username, password):
         return s
     except smtplib.SMTPConnectError:
         f = open("ERROR_LOG.txt","a+")
-        f.write('Error: Could not setup SMTP connection, will retry in a minute')
+        f.write('Error: Could not setup SMTP connection, will retry in a minute\n')
         return None
 
 def getCredentials(path):
     '''
-    Extracts and returns the username and password from a json in a tuple
+    Extracts and returns the host address, port number, username and password from a json in a tuple
     final value in tuple is True if success and False if failure
     
+    It is optional for the json to have the host address and port number
+        
     Parameters
     path: the path of the json to be read
     '''
     try:
-        json_file = open(path)
+        json_file = open(path, 'r')
         json_str = json_file.read()
         json_data = json.loads(json_str)
+        return json_data["host address"], json_data["port number"], json_data["username"], json_data["password"], True
+    except KeyError:
+        #this json doesn't have host address and port number
         return json_data["username"], json_data["password"], True
     except IOError:
+        #could not read the json
         f = open("ERROR_LOG.txt","a+")
-        f.write('Error: JSON path was invalid. Will not send pictures\n')
+        f.write('Error: JSON path was invalid.\n')
         f.close()
         return "","", False
 
-def formatMessage(sender, receiver, files, subject = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")):
+def formatMessage(sender, receiver, files, subject = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"), failed_files = []):
     '''
     formats an email message to send by SMTP server
     
@@ -85,14 +112,19 @@ def formatMessage(sender, receiver, files, subject = datetime.datetime.now().str
     msg["To"] = receiver
     msg['Date'] = formatdate(localtime=True)
     msg["Subject"] = subject
-    
     for path in files:
-        with open(path, 'rb') as file:
-            part = MIMEBase('application', "octet-stream")
-            part.set_payload(file.read())
-            encoders.encode_base64(part)
-            part.add_header('Content-Disposition','attachment; filename="{}"'.format(op.basename(path)))
-            msg.attach(part)
+        try:
+            with open(path, 'rb') as file:
+                part = MIMEBase('application', "octet-stream")
+                part.set_payload(file.read())
+                encoders.encode_base64(part)
+                part.add_header('Content-Disposition','attachment; filename="{}"'.format(op.basename(path)))
+                msg.attach(part)
+        except IOError:
+            failed_files.append(path)
+            f = open("ERROR_LOG.txt","a+")
+            f.write('Error: lost file at: '+path+'\n')
+            f.close()
     
     return msg
 
@@ -126,7 +158,7 @@ def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = Tru
     
     sender: the email account sending the message
     receiver: the email account receiveing the message
-    file_paths: a list of (str) paths to files that need to be sent
+    file_paths: a list of (str) paths to jpg files that need to be sent
     delete_sent: should we delete the file after it is successfully emailed
     '''
     for file_path in file_paths:
@@ -143,9 +175,50 @@ def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = Tru
         except smtplib.SMTPServerDisconnected:
             del msg
             f = open("ERROR_LOG.txt","a+")
-            f.write('Error: Could not send some pictures.\n')
+            f.write('Error: Could not send some pictures due to disconnected SMTP.\n')
             f.write('\tDate: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
             f.write('\tConnected to Internet: ' + str(have_internet()) + '\n')
             f.close()
             return False
+    return True
+
+def sendAllJson(sender, receiver, json_paths, server, delete_sent = True):
+    '''
+    Attempts to send all files located at the paths in file_paths via email
+    
+    sender: the email account sending the message
+    receiver: the email account receiveing the message
+    json_paths: a list of (str) paths to json files that need to be sent
+    	the json files should hold an entry of:
+    		"taken": "<TIME>" where <TIME> is time the pictures were taken (will be subject line)
+    	the json files should hold an entry array of:
+    		"picture_paths": ["<SOME_PATH.jpg>", "<SOME_PATH2.jpg>", ...]
+    	All pictures found at the paths in this array will be sent in one email
+    	For this reason it is important that the array not be filled with more bytes
+    	than the maximum one email can send
+    '''
+    for json_path in json_paths:
+    	json_file = open(path)
+        json_str = json_file.read()
+        picture_data = json.loads(json_str)
+        failed_files = []
+        msg = formatMessage(sender, receiver, picture_data["picture_paths"], picture_data["taken"], failed_files)
+        try:
+            server.send_message(msg)
+            if delete_sent:
+                for picture_path in picture_data["picture_paths"]:
+                    if path not in failed_files:
+                        os.remove(picture_path)
+                os.remove(json_path)
+            del msg
+        except smtplib.SMTPServerDisconnected:
+        	#this exception likely happened because we lost internet before we could send the message
+            del msg
+            f = open("ERROR_LOG.txt","a+")
+            f.write('Error: Could not send some pictures due to disconnected SMTP.\n')
+            f.write('\tDate: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
+            f.write('\tConnected to Internet: ' + str(have_internet()) + '\n')
+            f.close()
+            return False
+            
     return True
