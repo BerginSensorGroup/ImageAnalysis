@@ -201,7 +201,7 @@ def sendAllJson(sender, receiver, json_paths, server, delete_sent = True):
         than the maximum one email can send
     '''
     for json_path in json_paths:
-        json_file = open(path)
+        json_file = open(json_path)
         json_str = json_file.read()
         picture_data = json.loads(json_str)
         failed_files = []
@@ -210,7 +210,7 @@ def sendAllJson(sender, receiver, json_paths, server, delete_sent = True):
             server.send_message(msg)
             if delete_sent:
                 for picture_path in picture_data["picture_paths"]:
-                    if path not in failed_files:
+                    if picture_path not in failed_files:
                         os.remove(picture_path)
                 os.remove(json_path)
             del msg
