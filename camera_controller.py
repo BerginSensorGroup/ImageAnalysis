@@ -95,7 +95,8 @@ def takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent
         else:
             #transfer the file to the unsent folder
             shutil.move(current_json_path, unsent_json_folder + files_in_current_folder[0])
-            current_json_path = unsent_json_folder + current_time_string +'.json'
+            #update the current path to represent a new json file
+            current_json_path = current_json_folder + current_time_string +'.json'
             #set up a dictionary to save to a new json file
             new_data = {"taken": current_time_string, "picture_paths" : [picture_path]}
             with open(current_json_path, 'w+') as savefile:
@@ -116,6 +117,3 @@ def takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent
     file = open(number_file, 'w+')
     file.write(str(pic_num))
     file.close()
-    
-    
-    
