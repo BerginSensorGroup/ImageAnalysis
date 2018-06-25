@@ -90,7 +90,7 @@ def sending_run(username, password, receiver, send_folder, stamp_folder):
 def sending_run_json(credentials, receiver, unsent_json_folder):
     '''
     Attempts to send all the pictures from the paths in the jsons contained in
-    	unsent_json_folder
+        unsent_json_folder
     If successful, function repeats after 60 seconds
     If unsuccessful, function repeates after 30 seconds
     
@@ -104,7 +104,7 @@ def sending_run_json(credentials, receiver, unsent_json_folder):
     
     seconds_until_next_call = 0
     if PYemail.have_internet():
-    	host_address, port_number, username, password = credentials.getCurrentCredentials()
+        host_address, port_number, username, password = credentials.getCurrentCredentials()
         server = PYemail.setupSMTP(host_address, port_number, username, password)
         if server != None:
             sent_all = False
@@ -175,7 +175,7 @@ def main1():
         while True:
             pass
     except:
-		#Record the reason why the program terminated
+        #Record the reason why the program terminated
         #exception_type, exception_value, traceback = sys.exc_info()
         termination_log = open(termination_log_path, 'a+')
         termination_log.write('Date: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
@@ -233,7 +233,7 @@ def main2():
         while True:
             pass
     except:
-		#Record the reason why the program terminated
+        #Record the reason why the program terminated
         #exception_type, exception_value, traceback = sys.exc_info()
         termination_log = open(termination_log_path, 'a+')
         termination_log.write('Date: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
