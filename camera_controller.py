@@ -100,7 +100,7 @@ def takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent
             new_data = {"taken": current_time_string, "picture_paths" : [picture_path]}
             with open(current_json_path, 'w+') as savefile:
                 json.dump(new_data, savefile)
-    else if len(files_in_current_folder) == 0:
+    elif len(files_in_current_folder) == 0:
         #make a new json file to put within the folder
         new_data = {"taken": current_time_string, "picture_paths" : [picture_path]}
         current_json_path = unsent_json_folder + current_time_string +'.json'
@@ -116,4 +116,3 @@ def takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent
     file = open(number_file, 'w+')
     file.write(str(pic_num))
     file.close()
-    
