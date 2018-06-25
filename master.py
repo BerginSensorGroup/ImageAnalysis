@@ -217,7 +217,7 @@ def main2():
         
         valid_credentials = PYemail.credential_set()
         for credential_path in credential_paths:
-            host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credentials_path)
+            host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
             if credentials_OK:
                  valid_credentials.addCredential(host_addr, port_num, username, password)
         
