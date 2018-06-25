@@ -5,6 +5,7 @@ import threading
 import datetime
 from time import sleep
 import os
+import smtplib
 import sys
 import traceback
 from disk_space import have_more_space_than
