@@ -206,7 +206,7 @@ def main2():
         unsent_picture_folder = '/home/pi/Documents/facial_detection/unsent_pictures/'
         picture_number_file = '/home/pi/Documents/facial_detection/current_picture_number.txt'
         
-        send_credentials_folder = "../sending_credentials/"
+        send_credentials_folder = "../Credentials/sending_credentials/"
         
         credential_paths = os.listdir(send_credentials_folder)
         credential_paths = [send_credentials_folder + json_name for json_name in credential_paths]
