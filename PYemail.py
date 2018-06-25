@@ -18,23 +18,23 @@ import http.client
 
 class credential_set(object):
     def __init__(self):
-        credentials = []
-        current = 0
+        self.credentials = []
+        self.current = 0
     def addCredential(self, host_address, port_number, username, password):
         #time_expired will represent the time when the credentials were last refused
         minDateTime = datetime.datetime(1, 1, 1, 0, 0, 0, 0)
-        credentials.append({'host_address': host_address, 'port_number': port_number, 
+        self.credentials.append({'host_address': host_address, 'port_number': port_number, 
               'username': username, 'password': password, 'time_expired': minDateTime})
     def updateExpiration(self, new_expiration = datetime.datetime.now()):
-        credentials[current]['time_expired'] = new_expiration
-        current += 1
-        if current >= len(credentials):
-            current = 0
+        self.credentials[self.current]['time_expired'] = new_expiration
+        self.current += 1
+        if self.current >= len(self.credentials):
+            self.current = 0
         return getCurrentCredentials(self)
     def getCurrentCredentials(self):
         if len(credentials == 0):
             return None
-        return (credentials[current]['username'], credentials[current]['password'])
+        return (self.credentials[self.current]['username'], self.credentials[self.current]['password'])
         
         
 #this function from:
