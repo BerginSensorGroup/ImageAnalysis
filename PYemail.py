@@ -32,8 +32,8 @@ class credential_set(object):
             current = 0
         return getCurrentCredentials(self)
     def getCurrentCredentials(self):
-    	if len(credentials == 0):
-    	    return None
+        if len(credentials == 0):
+            return None
         return (credentials[current]['username'], credentials[current]['password'])
         
         
@@ -189,16 +189,16 @@ def sendAllJson(sender, receiver, json_paths, server, delete_sent = True):
     sender: the email account sending the message
     receiver: the email account receiveing the message
     json_paths: a list of (str) paths to json files that need to be sent
-    	the json files should hold an entry of:
-    		"taken": "<TIME>" where <TIME> is time the pictures were taken (will be subject line)
-    	the json files should hold an entry array of:
-    		"picture_paths": ["<SOME_PATH.jpg>", "<SOME_PATH2.jpg>", ...]
-    	All pictures found at the paths in this array will be sent in one email
-    	For this reason it is important that the array not be filled with more bytes
-    	than the maximum one email can send
+        the json files should hold an entry of:
+            "taken": "<TIME>" where <TIME> is time the pictures were taken (will be subject line)
+        the json files should hold an entry array of:
+            "picture_paths": ["<SOME_PATH.jpg>", "<SOME_PATH2.jpg>", ...]
+        All pictures found at the paths in this array will be sent in one email
+        For this reason it is important that the array not be filled with more bytes
+        than the maximum one email can send
     '''
     for json_path in json_paths:
-    	json_file = open(path)
+        json_file = open(path)
         json_str = json_file.read()
         picture_data = json.loads(json_str)
         failed_files = []
@@ -212,7 +212,7 @@ def sendAllJson(sender, receiver, json_paths, server, delete_sent = True):
                 os.remove(json_path)
             del msg
         except smtplib.SMTPServerDisconnected:
-        	#this exception likely happened because we lost internet before we could send the message
+            #this exception likely happened because we lost internet before we could send the message
             del msg
             f = open("ERROR_LOG.txt","a+")
             f.write('Error: Could not send some pictures due to disconnected SMTP.\n')
