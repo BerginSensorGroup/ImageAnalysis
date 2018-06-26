@@ -7,6 +7,27 @@ import sys
 
 from PYemail import getCredentials
 
+def delete_sent(username, password):
+	'''
+	Deletes all emails from the sent folder of an account
+	
+	Parameters
+	username: username for the email account
+	password: password for the email account
+	'''
+	imapSession = imaplib.IMAP4_SSL('imap.gmail.com')
+	typ, accountDetails = imapSession.login(username, password)
+	imapSession.select('"[Gmail]/Sent Mail"')
+	typ, data = imapSession.search(None, 'ALL')
+	if data != ['']:
+		#mark all emails to be deleted
+		imapSession.store('1:*', '+X-GM-LABELS', '\\Trash')
+	#delete the emails and end the session
+	imapSession.select('[Gmail]/Trash')
+	imapSession.store('1:*','+FLAGS','\\Deleted')
+	imapSession.close()
+	imapSession.logout()
+
 def unpack(username, password, saveFolder, sender_email = 'berginsender@gmail.com'):
 	'''
 	Saves pictures and timestamps in emails from sender_email to a local
@@ -69,11 +90,27 @@ def unpack(username, password, saveFolder, sender_email = 'berginsender@gmail.co
 	imapSession.close()
 	imapSession.logout()
 
-if __name__ == '__main__':
+def test_unpack():
 	saveFolder = 'attachments'
 	path = "../berginRecieverCredentials.json"
+	
+	accepted_senders = ['berginsender@gmail.com', 'berginsender2@gmail.com',
+		'berginsender3@gmail.com','berginsender4@gmail.com']
+	
 	username, password, success = getCredentials(path)
 	if success:
-		unpack(username, password, saveFolder)
+		for sender in accepted_senders:
+			unpack(username, password, saveFolder)
 	else:
 		print('Could not find credentials')
+
+def test_delete_sent():
+	path = "../Credentials/sending_credentials/berginSenderCredentials.json"
+	username, password, success = getCredentials(path)
+	if success:
+		delete_sent(username, password)
+	else:
+		print('Could not find credentials')
+		
+if __name__ == '__main__':
+	test_delete_sent()
