@@ -112,8 +112,12 @@ def sending_run_json(credentials, receiver, unsent_json_folder):
             try:
                 sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
             except smtplib.SMTPDataError:
-                #this exception likely happened because we exceeded the quota of our email provider
+                #SMTPDataError exception likely happened because we exceeded the quota of our email provider
                 credentials.updateExpiration()
+            except smtplib.SMTPSenderRefused:
+                #SMTPSenderRefused exception likely happened because we sent too many messages on one SMTP instance
+                #this will resolve itself when we open the next SMTP instance
+                pass
             if sent_all:
                 seconds_until_next_call = 60
                 server.quit()
