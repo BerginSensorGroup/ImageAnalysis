@@ -25,12 +25,6 @@ class credential_set(object):
         minDateTime = datetime.datetime(1, 1, 1, 0, 0, 0, 0)
         self.credentials.append({'host address': host_address, 'port number': port_number, 
               'username': username, 'password': password, 'time expired': minDateTime})
-    def updateExpiration(self, new_expiration = datetime.datetime.now()):
-        self.credentials[self.current]['time expired'] = new_expiration
-        self.current += 1
-        if self.current >= len(self.credentials):
-            self.current = 0
-        return getCurrentCredentials(self)
     def getCurrentCredentials(self):
         if len(self.credentials) == 0:
             return None
@@ -38,6 +32,12 @@ class credential_set(object):
         			self.credentials[self.current]['port number'],
         			self.credentials[self.current]['username'], 
         			self.credentials[self.current]['password'])
+    def updateExpiration(self, new_expiration = datetime.datetime.now()):
+        self.credentials[self.current]['time expired'] = new_expiration
+        self.current += 1
+        if self.current >= len(self.credentials):
+            self.current = 0
+        return self.getCurrentCredentials()
         
         
 #this function from:
