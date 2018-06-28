@@ -42,8 +42,8 @@ def camera_run_json(camera, current_json_folder, unsent_json_folder, unsent_pict
         the number is maintained in the case of power loss
     '''
     try:
-		MIN_SPACE = 100000000 #don't take a picture unless we have at least 100 MB of free space
-		if have_more_space_than(MIN_SPACE):
+        MIN_SPACE = 100000000 #don't take a picture unless we have at least 100 MB of free space
+        if have_more_space_than(MIN_SPACE):
 			camera_controller.takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name)
 	
 		t = threading.Timer(call_freq, camera_run_json, (camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name))
