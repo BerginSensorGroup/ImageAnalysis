@@ -40,13 +40,19 @@ def camera_run_json(camera, current_json_folder, unsent_json_folder, unsent_pict
         will ever have the same name. A file is used instead of a variable so
         the number is maintained in the case of power loss
     '''
-    MIN_SPACE = 100000000 #don't take a picture unless we have at least 100 MB of free space
-    if have_more_space_than(MIN_SPACE):
-        camera_controller.takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name)
-    
-    t = threading.Timer(call_freq, camera_run_json, (camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name))
-    t.daemon = True #finish when main finishes
-    t.start()
+    try:
+		MIN_SPACE = 100000000 #don't take a picture unless we have at least 100 MB of free space
+		if have_more_space_than(MIN_SPACE):
+			camera_controller.takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name)
+	
+		t = threading.Timer(call_freq, camera_run_json, (camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name))
+		t.daemon = True #finish when main finishes
+		t.start()
+    except:
+        #if there are any uncaught exceptions we need to kill the program for debugging
+	    recordFailure()
+	    #send a keyboard interrupt to main thread
+	    os.kill(os.getpid(), signal.SIGINT)
 
 def sending_run(username, password, receiver, send_folder, stamp_folder):
     '''
@@ -100,41 +106,57 @@ def sending_run_json(credentials, receiver, unsent_json_folder):
     receiver: the email account receiveing the message
     unsent_json_folder: the directoty from which to obtain the files to send
     '''
-    json_paths = os.listdir(unsent_json_folder)
-    json_paths = [unsent_json_folder + file_name for file_name in json_paths]
-    
-    seconds_until_next_call = 0
-    if PYemail.have_internet():
-        host_address, port_number, username, password = credentials.getCurrentCredentials()
-        server = PYemail.setupSMTP(host_address, port_number, username, password)
-        if server != None:
-            sent_all = False
-            try:
-                sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
-            except smtplib.SMTPDataError:
-                #SMTPDataError exception likely happened because we exceeded the quota of our email provider
-                credentials.updateExpiration()
-            except smtplib.SMTPSenderRefused:
-                #SMTPSenderRefused exception likely happened because we sent too many messages on one SMTP instance
-                #this will resolve itself when we open the next SMTP instance
-                pass
-            if sent_all:
-                seconds_until_next_call = 60
-                server.quit()
-                #sent all files
-            else:
-                seconds_until_next_call = 30
-                #sent some but not all
-        else:
-            seconds_until_next_call = 30
-            #Didn't send any: had internet but could not setup SMTP
-    else:
-        seconds_until_next_call = 30
-        #Didn't send any: did not have internet
-    t = threading.Timer(seconds_until_next_call, sending_run_json, (credentials, receiver, unsent_json_folder))
-    t.daemon = True #finish when main finishes
-    t.start()
-    
+    try:
+		json_paths = os.listdir(unsent_json_folder)
+		json_paths = [unsent_json_folder + file_name for file_name in json_paths]
+   
+		seconds_until_next_call = 0
+		if PYemail.have_internet():
+			host_address, port_number, username, password = credentials.getCurrentCredentials()
+			server = PYemail.setupSMTP(host_address, port_number, username, password)
+			if server != None:
+				sent_all = False
+				try:
+					sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+				except smtplib.SMTPDataError:
+					#SMTPDataError exception likely happened because we exceeded the quota of our email provider
+					credentials.updateExpiration()
+				except smtplib.SMTPSenderRefused:
+					#SMTPSenderRefused exception likely happened because we sent too many messages on one SMTP instance
+					#this will resolve itself when we open the next SMTP instance
+					pass
+				if sent_all:
+					seconds_until_next_call = 60
+					server.quit()
+					#sent all files
+				else:
+					seconds_until_next_call = 30
+					#sent some but not all
+			else:
+				seconds_until_next_call = 30
+				#Didn't send any: had internet but could not setup SMTP
+		else:
+			seconds_until_next_call = 30
+			#Didn't send any: did not have internet
+		t = threading.Timer(seconds_until_next_call, sending_run_json, (credentials, receiver, unsent_json_folder))
+		t.daemon = True #finish when main finishes
+		t.start()
+	except:
+	    #if there are any uncaught exceptions we need to kill the program for debugging
+	    recordFailure()
+	    #send a keyboard interrupt to main thread
+	    os.kill(os.getpid(), signal.SIGINT)
+
+def recordFailure():
+    #Record the reason why the program terminated
+    #exception_type, exception_value, traceback = sys.exc_info()
+    termination_log = open(termination_log_path, 'a+')
+    termination_log.write('Date: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
+    termination_log.write("\tConnected to internet: " + str(PYemail.have_internet()) + '\n')
+    termination_log.write(traceback.format_exc())
+    termination_log.write("\n\n\n\n\n")
+    termination_log.close()   
+
 def main1():
     try:
         ##CONSTANTS
@@ -180,14 +202,7 @@ def main1():
         while True:
             pass
     except:
-        #Record the reason why the program terminated
-        #exception_type, exception_value, traceback = sys.exc_info()
-        termination_log = open(termination_log_path, 'a+')
-        termination_log.write('Date: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
-        termination_log.write("\tConnected to internet: " + str(PYemail.have_internet()) + '\n')
-        termination_log.write(traceback.format_exc())
-        termination_log.write("\n\n\n\n\n")
-        termination_log.close()
+        recordFailure()
 
 def main2():
     try:
@@ -220,6 +235,17 @@ def main2():
     
         camera = PiCamera()
         
+        '''
+        There are some camera settings we could play around with:
+        camera = PiCamera(resolution=(1280, 720),framerate=Fraction(1, 6),sensor_mode=3)
+		camera.shutter_speed = 6000000
+		camera.iso = 800
+        
+        https://picamera.readthedocs.io/en/release-1.13/recipes1.html
+        For low light suggests low framerate (1/6 fps), slow shutter speed (6s), and high ISO (800)
+        '''
+        
+        
         valid_credentials = PYemail.credential_set()
         for credential_path in credential_paths:
             host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
@@ -238,14 +264,7 @@ def main2():
         while True:
             pass
     except:
-        #Record the reason why the program terminated
-        #exception_type, exception_value, traceback = sys.exc_info()
-        termination_log = open(termination_log_path, 'a+')
-        termination_log.write('Date: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
-        termination_log.write("\tConnected to internet: " + str(PYemail.have_internet()) + '\n')
-        termination_log.write(traceback.format_exc())
-        termination_log.write("\n\n\n\n\n")
-        termination_log.close()   
+       recordFailure()
             
 if __name__ == '__main__':
     main2()
