@@ -1,5 +1,6 @@
 import PYemail
 import sys
+import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
@@ -37,19 +38,28 @@ if __name__ == '__main__':
 	#Who should recieve the warning emails?
 	warning_receivers = ["xavier.boudreau@duke.edu", "jrf36@duke.edu"]
 	
-	credentials_path = "../Credentials/berginSenderCredentials.json"
-	#GMAIL TO GENERAL EXCHANGE (SMTP TLS)
-	host_address = "smtp.gmail.com"
-	port_number = 587
+	send_credentials_folder = "../Credentials/sending_credentials/"
+        
+	credential_paths = os.listdir(send_credentials_folder)
+	credential_paths = [send_credentials_folder + json_name for json_name in credential_paths]
 	
-	username, password, success = PYemail.getCredentials(credentials_path)
-	if not success:
-		#this program is useless without an email account to send the warning
-		sys.exit()
-	while not PYemail.have_internet():
-		pass
-	server = PYemail.setupSMTP(host_address, port_number, username, password)
-	
-	for warning_receiver in warning_receivers:
-		msg = PYemail.formatMessage(username, warning_receiver, [termination_log_path], subject = "Warning for {}: master.py terminated and will not resume".format(name))
-		server.send_message(msg)
+	for credential_path in credential_paths:
+		try:
+			host_address, port_number, username, password, success = PYemail.getCredentials(credential_path)
+			if not success:
+				#we can only send the warning if we have a valid email
+				continue
+			while not PYemail.have_internet():
+				pass
+			server = PYemail.setupSMTP(host_address, port_number, username, password)
+			
+			for warning_receiver in warning_receivers:
+				msg = PYemail.formatMessage(username, warning_receiver, [termination_log_path], subject = "Warning for {}: master.py terminated and will not resume".format(name))
+				server.send_message(msg)
+			#if we managed to send the warning then finish the program
+			break
+			
+		except:
+			#if we didn't manage to send the warning try again with the next account
+			#print('refused')
+			continue
