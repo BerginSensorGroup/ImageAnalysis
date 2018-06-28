@@ -70,7 +70,7 @@ def setupSMTP(host_address, port_number, username, password):
         s.starttls()
         s.login(username, password)
         return s
-    except smtplib.SMTPConnectError, OSError:
+    except (smtplib.SMTPConnectError, OSError) as error:
         f = open("ERROR_LOG.txt","a+")
         f.write('Error: Could not setup SMTP connection, will retry in a minute\n')
         return None
