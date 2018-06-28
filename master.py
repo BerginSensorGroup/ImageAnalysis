@@ -8,6 +8,7 @@ import os
 import smtplib
 import sys
 import traceback
+import signal
 from disk_space import have_more_space_than
 
 def camera_run(camera, save_folder, stamp_folder, picture_number_file, name, call_freq = 10.0):
