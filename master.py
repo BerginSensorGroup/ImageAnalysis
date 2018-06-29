@@ -262,7 +262,7 @@ def main2():
             sending_run_json(valid_credentials, receiver, unsent_json_folder)
         
         while True:
-            pass
+            sleep(1)
     except:
        recordFailure()
             
