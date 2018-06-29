@@ -1,6 +1,6 @@
 import os
 
-from InitialFaceREcognition import *
+from InitialFaceRecognition import *
 from ImageUnpack import *
 from interpret import *
 from detect import *
