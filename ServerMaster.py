@@ -21,6 +21,7 @@ if __name__ == "__main__":
 		username, password, success = getCredentials(path)
 		if success:
 			unpack(username, password, saveFolder)
+			print('Logged into email')
 		else:
 			print('Could not find credentials')
 
@@ -35,6 +36,7 @@ if __name__ == "__main__":
 		faceImages = []
 		
 		for file in newImages:
+			print('Found new images')
 			#Check if they have faces
 			if containsFace('attachments/' + file): 
 				newImage = Image('attachments/' + file)
@@ -64,4 +66,5 @@ if __name__ == "__main__":
 					' ' + joyLikelihood + ' ' + sorrowLikelihood + ' ' + angerLikelihood + ' ' + angerLikelihood + ' ' + surpriseLikelihood + 
 					' ' + underExposedLikelihood + ' ' + blurredLikelihood + ' ' + headwearLikelihood + '\n')
 					file.write(faceText)
+					print('Image logged to file')
 			file.close()
