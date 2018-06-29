@@ -17,12 +17,12 @@ if __name__ == "__main__":
 			break
 		#Pull images
 		saveFolder = 'attachments'
-			path = "../berginRecieverCredentials.json"
-			username, password, success = getCredentials(path)
-			if success:
-				unpack(username, password, saveFolder)
-			else:
-				print('Could not find credentials')
+		path = "../berginRecieverCredentials.json"
+		username, password, success = getCredentials(path)
+		if success:
+			unpack(username, password, saveFolder)
+		else:
+			print('Could not find credentials')
 
 		newImages = os.listdir('attachments')
 
@@ -39,12 +39,13 @@ if __name__ == "__main__":
 			if containsFace('attachments/' + file): 
 				newImage = Image('attachments/' + file)
 				#Run Interpret on those faces 
-				newImage.setFaces() = detect.getFaces('attachments/' + file, client)
+				newFaces = detect.getFaces('attachments/' + file, client)
+				newImage.setFaces(newFaces)
 				faceImages.append(newImage)
 		for image in faceImages:
 			if image not in alreadyWritten:
 				file = open('faceData.txt', 'a')
-				imageText ='new ' + image.path + ' ' + image.date + ' ' + image.time.hour + ' ' + image.time.minute + '\n'
+				imageText =('new ' + image.path + ' ' + image.date + ' ' + image.time.hour + ' ' + image.time.minute + '\n')
 				file.write(imageText)
 				for face in image.faces:
 					i = 0
@@ -59,18 +60,8 @@ if __name__ == "__main__":
 					underExposedLikelihood = face.under_exposed_likelihood
 					blurredLikelihood = face.blurred_likelihood
 					headwearLikelihood = face.headwear_likelihood
-					faceText = 'image' + str(i) + ' ' + panAngle + ' ' + tiltAngle + ' ' + detectionConfidence + ' ' + landmarkingConfidence + 
-					' ' + joyLikelihood + ' ' + sorrowLikelihood + ' ' + angerLikelihood + ' ' angerLikelihood + ' ' + surpriseLikelihood + 
-					' ' + underExposedLikelihood + ' ' + blurredLikelihood + ' ' + headwearLikelihood + '\n'
+					faceText = ('image' + str(i) + ' ' + panAngle + ' ' + tiltAngle + ' ' + detectionConfidence + ' ' + landmarkingConfidence + 
+					' ' + joyLikelihood + ' ' + sorrowLikelihood + ' ' + angerLikelihood + ' ' + angerLikelihood + ' ' + surpriseLikelihood + 
+					' ' + underExposedLikelihood + ' ' + blurredLikelihood + ' ' + headwearLikelihood + '\n')
 					file.write(faceText)
 			file.close()
-
-
-
-			
-			
-
-
-
-
-	
