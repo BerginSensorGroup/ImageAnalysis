@@ -16,7 +16,7 @@ class Image:
         year_num = int(pathSplit[4][:4])
         month_num = months[pathSplit[2]]
         day_num =  int(pathSplit[3])
-        self.date = date(year_num, month_num, day_num)
+        
         time_string = (pathSplit[0].split('/'))[1]
         hour_num = int(time_string[:2])
         if hour_num == 12 and time_string[5:] == 'AM':
@@ -24,9 +24,13 @@ class Image:
         if hour_num != 12 and time_string[5:] == 'PM':
             hour_num += 12
         minute_num = int(time_string[3:5])
-        self.time =  time(hour_num, minute_num)
+        self.datetime =  datetime.datetime(year_num, month_num, day_num, hour_num, minute_num)
 
     def setFaces(self, myfaces):
         self.faces = myfaces
+    def __lt__(self, other):
+        #uses the timestamp to compare two image capture times
+        #if self < other is true, then self was captured before other
+        return self.datetime < other.datetime
     def getFaces(self):
         return faces
