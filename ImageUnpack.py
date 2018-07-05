@@ -90,8 +90,8 @@ def unpack(username, password, saveFolder, sender_email = 'berginsender@gmail.co
 	imapSession.close()
 	imapSession.logout()
 
-def test_unpack():
-	saveFolder = 'attachments'
+def test_unpack(saveFolder = 'attachments'):
+	
 	path = "../berginRecieverCredentials.json"
 	
 	accepted_senders = ['berginsender@gmail.com', 'berginsender2@gmail.com',

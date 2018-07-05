@@ -5,6 +5,7 @@ from ImageUnpack import *
 from interpret import *
 from detect import *
 from PYemail import getCredentials
+import time
 
 
 if __name__ == "__main__":
@@ -20,6 +21,7 @@ if __name__ == "__main__":
 		path = "../berginRecieverCredentials.json"
 		username, password, success = getCredentials(path)
 		if success:
+			#accept default sender's emails
 			unpack(username, password, saveFolder)
 			print('Logged into email')
 		else:
@@ -29,24 +31,28 @@ if __name__ == "__main__":
 
 		if len(newImages) == 0:
 			print('No new images')
+			#if there aren't any new images wait a few seconds before checking again
+			time.sleep(15)
 			continue
 
 		client = vision.ImageAnnotatorClient()
 
+		#TODO: change faceImages to set, don't use alreadyWritten, delete when sent
 		faceImages = []
 		
-		for file in newImages:
+		for image_path in newImages:
 			print('Found new images')
 			#Check if they have faces
-			if containsFace('attachments/' + file): 
-				newImage = Image('attachments/' + file)
+			if containsFace('attachments/' + image_path): 
+				#note Image is our Image class, NOT the Image module from PIL
+				newImage = Image('attachments/' + image_path)
 				#Run Interpret on those faces 
-				newFaces = detect.getFaces('attachments/' + file, client)
+				newFaces = detect.getFaces('attachments/' + image_path, client)
 				newImage.setFaces(newFaces)
 				faceImages.append(newImage)
 		for image in faceImages:
 			if image not in alreadyWritten:
-				file = open('faceData.txt', 'a')
+				file = open('faceData.txt', 'a+')
 				imageText =('new ' + image.path + ' ' + image.date + ' ' + image.time.hour + ' ' + image.time.minute + '\n')
 				file.write(imageText)
 				for face in image.faces:
@@ -67,4 +73,5 @@ if __name__ == "__main__":
 					' ' + underExposedLikelihood + ' ' + blurredLikelihood + ' ' + headwearLikelihood + '\n')
 					file.write(faceText)
 					print('Image logged to file')
-			file.close()
+				file.close()
+			
