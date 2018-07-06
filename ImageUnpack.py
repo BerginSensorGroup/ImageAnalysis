@@ -90,19 +90,28 @@ def unpack(username, password, saveFolder, sender_email = 'berginsender@gmail.co
 	imapSession.close()
 	imapSession.logout()
 
-def test_unpack(saveFolder = 'attachments'):
+def downloadImages(saveFolder, credential_path, accepted_senders):
+	'''
+	Downloads images from an email account's inbox
 	
-	path = "../berginRecieverCredentials.json"
+	Returns: a list of str image file names that were downloaded
 	
-	accepted_senders = ['berginsender@gmail.com', 'berginsender2@gmail.com',
-		'berginsender3@gmail.com','berginsender4@gmail.com']
+	Parameters:
 	
-	username, password, success = getCredentials(path)
+	saveFolder: folder that willl hold the images on which to perform facial detection
+	credential_path: the location of the credentials of the account from which we should
+		pull the images
+	accepted_senders: a list of str email addresses whose messages we should download
+	'''
+	
+	username, password, success = getCredentials(credential_path)
 	if success:
 		for sender in accepted_senders:
-			unpack(username, password, saveFolder)
+			unpack(username, password, saveFolder, sender_email = sender)
+			print('Downloading messages from:', sender)
 	else:
 		print('Could not find credentials')
+	return os.listdir('attachments')
 
 def test_delete_sent():
 	path = "../Credentials/sending_credentials/berginSenderCredentials.json"
