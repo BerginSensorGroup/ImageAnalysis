@@ -33,4 +33,8 @@ class Image:
         #if self < other is true, then self was captured before other
         return self.datetime < other.datetime
     def getFaces(self):
-        return faces
+        return self.faces
+    def getDateTimeStr(self):
+        return str(self.datetime.year) + ' ' + str(self.datetime.month) + ' ' \
+			+ str(self.datetime.day) + ' ' + str(self.datetime.hour) + ' ' + \
+			 str(self.datetime.minute)

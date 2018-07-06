@@ -111,7 +111,7 @@ def downloadImages(saveFolder, credential_path, accepted_senders):
 			print('Downloading messages from:', sender)
 	else:
 		print('Could not find credentials')
-	return os.listdir('attachments')
+	return os.listdir(saveFolder)
 
 def test_delete_sent():
 	path = "../Credentials/sending_credentials/berginSenderCredentials.json"
