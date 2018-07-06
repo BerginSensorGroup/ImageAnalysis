@@ -4,6 +4,7 @@ from InitialFaceRecognition import *
 from ImageUnpack import *
 from interpret import *
 from detect import *
+from Image import *
 from PYemail import getCredentials
 import time
 import datetime
@@ -19,10 +20,10 @@ def window_string(start_window, end_window):
 	'''
 	start_str = str(start_window.year) + ' ' + str(start_window.month) + ' ' \
 			+ str(start_window.day) + ' ' + str(start_window.hour) + ' ' + \
-			 str(start_window.minute)
+			str(start_window.minute)
 	end_str = str(end_window.year) + ' ' + str(end_window.month) + ' ' \
 			+ str(end_window.day) + ' ' + str(end_window.hour) + ' ' + \
-			 str(end_window.minute)
+			str(end_window.minute)
 	return start_str + '_to_' + end_str + '.txt'
 
 def save_metadata_text(faceImages, faceDataFolder = 'faceData', window = 60):
@@ -55,7 +56,7 @@ def save_metadata_text(faceImages, faceDataFolder = 'faceData', window = 60):
 			start_window = end_window
 			end_window = start_window + datetime.timedelta(minutes = window)
 		file = open(faceDataFolder+'/'+window_string(start_window, end_window), 'a+')
-		imageText = ('new ' + image.path + ' ' + image.date + ' ' + image.time.hour + ' ' + image.time.minute + '\n')
+		imageText = ('image timestamp: ' + image.getDateTimeStr() + '\n')
 		file.write(imageText)
 		#save each face's metadata for later analysis
 		for face in image.getFaces():
@@ -76,14 +77,14 @@ def save_metadata_text(faceImages, faceDataFolder = 'faceData', window = 60):
 			' ' + underExposedLikelihood + ' ' + blurredLikelihood + ' ' + headwearLikelihood + '\n')
 			file.write(faceText)
 			print('Face logged to file')
-			i+=1
+			i += 1
 		print('Image logged to file')
 		file.close()
 
 if __name__ == "__main__":
 	#TODO: after successful tests, delete when image meta data from saveFolder saved
 	
-	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '../Credentials/service_account_file'
+	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '../Credentials/service-account-file.json'
 	
 	while True:
 		inp = input('enter stop to stop: ')
@@ -110,6 +111,7 @@ if __name__ == "__main__":
 		QUERY_LIMIT = 10
 		QUERIES = 0
 		for image_path in newImages:
+			print('Running local facial detection on new image')
 			#Locally check if they have faces
 			if containsFace(saveFolder + '/' + image_path) and QUERIES < QUERY_LIMIT:
 				#note Image is our Image class, NOT the Image module from PIL
@@ -121,7 +123,5 @@ if __name__ == "__main__":
 				if len(newFaces) > 0:
 					newImage.setFaces(newFaces)
 					faceImages.append(newImage)
-				
 		
-		save_metadata_text(faceImages, window = 60)
-		
+		save_metadata_text(faceImages, window = 60)	

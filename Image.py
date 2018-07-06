@@ -36,5 +36,5 @@ class Image:
         return self.faces
     def getDateTimeStr(self):
         return str(self.datetime.year) + ' ' + str(self.datetime.month) + ' ' \
-			+ str(self.datetime.day) + ' ' + str(self.datetime.hour) + ' ' + \
-			 str(self.datetime.minute)
+            + str(self.datetime.day) + ' ' + str(self.datetime.hour) + ' ' + \
+            str(self.datetime.minute)
