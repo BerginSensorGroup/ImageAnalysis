@@ -53,7 +53,8 @@ def takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent
     camera: the camera instance with which to take pictures
     current_json_folder: the folder with the json containing the filepaths of pictures
     	taken in the current minute
-    unsent_json_folder: the folder with jsons containing the file
+    unsent_json_folder: the folder with jsons containing the filepath
+    unsent_picture_folder:
     number_file: a file that holds the current picture number so no two pictures
         will ever have the same name. A file is used instead of a variable so
         the number is maintained in the case of power loss
@@ -77,14 +78,23 @@ def takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent
     
     
     #get path from current_json_folder, if it is empty then make a new
-    #files should be empty or contain one file
+    #files_in_current_folder should be empty or contain one file
     files_in_current_folder = os.listdir(current_json_folder)
     if len(files_in_current_folder) == 1:
         current_json_path = current_json_folder + files_in_current_folder[0]
         json_file = open(current_json_path, 'r')
         json_str = json_file.read()
         json_file.close()
-        picture_data = json.loads(json_str)
+        picture_data = {}
+        try:
+        	picture_data = json.loads(json_str)
+        except json.decoder.JSONDecodeError:
+        	#the json can be invalid if power was lost while the json was being written to
+        	#delete the current json and the just-captured picture. 
+        	#A new json will be formed at the next call of this function
+        	os.unlink("current_json_path")
+        	os.unlink("picture_path")
+        	return None
         old_time_string = picture_data["taken"]
         #	if they are the same time string append picture_path to the array and save the json
         if old_time_string == current_time_string:
