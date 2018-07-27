@@ -92,8 +92,8 @@ def takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent
         	#the json can be invalid if power was lost while the json was being written to
         	#delete the current json and the just-captured picture. 
         	#A new json will be formed at the next call of this function
-        	os.unlink("current_json_path")
-        	os.unlink("picture_path")
+        	os.unlink(current_json_path)
+        	os.unlink(picture_path)
         	return None
         old_time_string = picture_data["taken"]
         #	if they are the same time string append picture_path to the array and save the json
