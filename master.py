@@ -41,10 +41,12 @@ def camera_run_json(camera, current_json_folder, unsent_json_folder, unsent_pict
         will ever have the same name. A file is used instead of a variable so
         the number is maintained in the case of power loss
     '''
+    #print('camera_run_json initiated')
     try:
         MIN_SPACE = 100000000 #don't take a picture unless we have at least 100 MB of free space
         if have_more_space_than(MIN_SPACE):
             camera_controller.takePicture_use_json(camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name)
+            #print('take picture')
         t = threading.Timer(call_freq, camera_run_json, (camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name))
         t.daemon = True #finish when main finishes
         t.start()
@@ -150,6 +152,7 @@ def sending_run_json(credentials, receiver, unsent_json_folder):
 def recordFailure():
     #Record the reason why the program terminated
     #exception_type, exception_value, traceback = sys.exc_info()
+    termination_log_path = 'TERMINATION_LOG.txt'
     termination_log = open(termination_log_path, 'a+')
     termination_log.write('Date: '+ datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '\n')
     termination_log.write("\tConnected to internet: " + str(PYemail.have_internet()) + '\n')
@@ -177,8 +180,8 @@ def main1():
         save_folder = '/home/pi/Documents/facial_detection/unsent_pictures/'
         stamp_folder = '/home/pi/Documents/facial_detection/unsent_stamps/'
         picture_number_file = '/home/pi/Documents/facial_detection/current_picture_number.txt'
-        
-        credentials_path = "../Credentials/berginSenderCredentials.json"
+        ##/home/pi/Credentials
+        credentials_path = "/home/pi/Credentials/berginSenderCredentials.json"
         receiver = 'BerginReciever@gmail.com'
         #GMAIL TO GENERAL EXCHANGE (SMTP TLS)
         host_address = "smtp.gmail.com"
@@ -220,17 +223,18 @@ def main2():
         except IOError:
             #if the name file does not exist, just continue without a name
             pass
-        
+        #Name not available
         current_json_folder = '/home/pi/Documents/facial_detection/current_json_folder/'
         unsent_json_folder = '/home/pi/Documents/facial_detection/unsent_json_folder/'
         unsent_picture_folder = '/home/pi/Documents/facial_detection/unsent_pictures/'
         picture_number_file = '/home/pi/Documents/facial_detection/current_picture_number.txt'
         
-        send_credentials_folder = "../Credentials/sending_credentials/"
+        send_credentials_folder = "/home/pi/Credentials/sending_credentials/"
         
         credential_paths = os.listdir(send_credentials_folder)
-        credential_paths = [send_credentials_folder + json_name for json_name in credential_paths]
         
+        credential_paths = [send_credentials_folder + json_name for json_name in credential_paths]
+        #'''print(credential_paths)'''
         receiver = 'BerginReciever@gmail.com'
     
         camera = PiCamera()
@@ -247,14 +251,18 @@ def main2():
         
         
         valid_credentials = PYemail.credential_set()
+        
         for credential_path in credential_paths:
             host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+            #print(username)
             if credentials_OK:
                  valid_credentials.addCredential(host_addr, port_num, username, password)
+                 #print('credential added')
         
         #wait 15 seconds on startup for wifi to connect
         if not PYemail.have_internet():
             sleep(15)
+            print('no internet')
         
         camera_run_json(camera, current_json_folder, unsent_json_folder, unsent_picture_folder, picture_number_file, name)
         

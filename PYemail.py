@@ -14,7 +14,13 @@ from email.utils import COMMASPACE, formatdate
 from email import encoders
 import datetime
 import http.client
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+import base64
+import codecs
 
+keyPath = '../firestoreKEY.json'
 
 class credential_set(object):
     def __init__(self):
@@ -22,6 +28,7 @@ class credential_set(object):
         self.current = 0
     def addCredential(self, host_address, port_number, username, password):
         #time_expired will represent the time when the credentials were last refused
+        
         minDateTime = datetime.datetime(1, 1, 1, 0, 0, 0, 0)
         self.credentials.append({'host address': host_address, 'port number': port_number, 
               'username': username, 'password': password, 'time expired': minDateTime})
@@ -89,7 +96,8 @@ def getCredentials(path):
         json_file = open(path, 'r')
         json_str = json_file.read()
         json_data = json.loads(json_str)
-        return json_data["host address"], json_data["port number"], json_data["username"], json_data["password"], True
+        #print(json_data['username'])
+        return json_data["host_address"], json_data["port_number"], json_data["username"], json_data["password"], True
     except KeyError:
         #this json doesn't have host address and port number
         return json_data["username"], json_data["password"], True
@@ -155,6 +163,27 @@ def get_stamp_and_stamp_path(stamp_paths, file_path):
     
     return ('NO TIME (could not find stamp file)', 'THIS_IS_NOT_A_FILE_PATH')
 
+def initializeDb(path):
+    cred = credentials.Certificate(path)
+    firebase_admin.initialize_app(cred)
+    db = firestore.client()
+    return db
+
+def imageToString(path):
+    serialImage = u'NOT FOUND'
+    with open(path, 'rb') as imageFile:
+        #print(serialImage)
+        serialImage = base64.b64encode(imageFile.read())
+        #print(serialImage)
+        #serialImage = codecs.encode(imageFile.read(), 'base64')
+        return serialImage
+
+
+def addToDB(database, collectionName, documentName, json):
+    doc_ref = database.collection(collectionName).document(documentName)
+    doc_ref.set(json)
+
+
 def sendAll(sender, receiver, file_paths, stamp_paths, server, delete_sent = True):
     '''
     Attempts to send all files located at the paths in file_paths via email
@@ -200,12 +229,29 @@ def sendAllJson(sender, receiver, json_paths, server, delete_sent = True):
         For this reason it is important that the array not be filled with more bytes
         than the maximum one email can send
     '''
+    #print('db pre init')
+    db = initializeDb(keyPath)
+    #print('db initialized')
     for json_path in json_paths:
         json_file = open(json_path)
         json_str = json_file.read()
         picture_data = json.loads(json_str)
         failed_files = []
+        i = 0
+        #print(picture_data['picture_paths'])
+        
+        for picture_path in picture_data['picture_paths']:
+            print('add to db')
+            imageString = imageToString(picture_path)
+            #print(datetime.datetime.now().strftime("%S, %I:%M%p on %B %d, %Y"))
+            addToDB(db, u'photos', u''+ datetime.datetime.now().strftime("%S, %I:%M%p on %B %d, %Y") + '', {
+            u'im': imageString,
+            u'time': picture_data['taken'][i]
+            })
+            i += 1
+        
         msg = formatMessage(sender, receiver, picture_data["picture_paths"], picture_data["taken"], failed_files)
+        
         try:
             server.send_message(msg)
             if delete_sent:

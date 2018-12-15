@@ -1,14 +1,5 @@
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON email credentials were invalid. Will not send pictures
-Error: JSON path was invalid. Will not send pictures
+
+Error: Could not setup SMTP connection, will retry in a minute
+Error: Could not send some pictures due to disconnected SMTP.
+	Date: 03:13PM on December 04, 2018
+	Connected to Internet: True

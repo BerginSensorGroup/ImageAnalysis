@@ -1,0 +1,2216 @@
+Date: 01:01AM on November 20, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 232, in main2
+    credential_paths = os.listdir(send_credentials_folder)
+FileNotFoundError: [Errno 2] No such file or directory: '../Credentials/sending_credentials/'
+
+
+
+
+
+Date: 07:34PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 232, in main2
+    credential_paths = os.listdir(send_credentials_folder)
+FileNotFoundError: [Errno 2] No such file or directory: '../Credentials/sending_credentials/'
+
+
+
+
+
+Date: 07:41PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 232, in main2
+    credential_paths = os.listdir(send_credentials_folder)
+FileNotFoundError: [Errno 2] No such file or directory: '../Credentials/sending_credentials/'
+
+
+
+
+
+Date: 08:13PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 232, in main2
+    credential_paths = os.listdir(send_credentials_folder)
+FileNotFoundError: [Errno 2] No such file or directory: '../Credentials/sending_credentials/'
+
+
+
+
+
+Date: 08:42PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 456, in _init_camera
+    self._camera = mo.MMALCamera()
+  File "/usr/lib/python3/dist-packages/picamera/mmalobj.py", line 2279, in __init__
+    super(MMALCamera, self).__init__()
+  File "/usr/lib/python3/dist-packages/picamera/mmalobj.py", line 633, in __init__
+    prefix="Failed to create MMAL component %s" % self.component_type)
+  File "/usr/lib/python3/dist-packages/picamera/exc.py", line 184, in mmal_check
+    raise PiCameraMMALError(status, prefix)
+picamera.exc.PiCameraMMALError: Failed to create MMAL component b'vc.ril.camera': Out of memory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 237, in main2
+    camera = PiCamera()
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 431, in __init__
+    self._init_camera(camera_num, stereo_mode, stereo_decimate)
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 460, in _init_camera
+    "Camera is not enabled. Try running 'sudo raspi-config' "
+picamera.exc.PiCameraError: Camera is not enabled. Try running 'sudo raspi-config' and ensure that the camera has been enabled.
+
+
+
+
+
+Date: 08:43PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 456, in _init_camera
+    self._camera = mo.MMALCamera()
+  File "/usr/lib/python3/dist-packages/picamera/mmalobj.py", line 2279, in __init__
+    super(MMALCamera, self).__init__()
+  File "/usr/lib/python3/dist-packages/picamera/mmalobj.py", line 633, in __init__
+    prefix="Failed to create MMAL component %s" % self.component_type)
+  File "/usr/lib/python3/dist-packages/picamera/exc.py", line 184, in mmal_check
+    raise PiCameraMMALError(status, prefix)
+picamera.exc.PiCameraMMALError: Failed to create MMAL component b'vc.ril.camera': Out of memory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 237, in main2
+    camera = PiCamera()
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 431, in __init__
+    self._init_camera(camera_num, stereo_mode, stereo_decimate)
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 460, in _init_camera
+    "Camera is not enabled. Try running 'sudo raspi-config' "
+picamera.exc.PiCameraError: Camera is not enabled. Try running 'sudo raspi-config' and ensure that the camera has been enabled.
+
+
+
+
+
+Date: 08:55PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 252, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:29PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 252, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:29PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 253, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:29PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 254, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:34PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 255, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:38PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 255, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:39PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 255, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:40PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 255, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:41PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 257, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:41PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:41PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:42PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 255, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:43PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 255, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:44PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:45PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:48PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:49PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 09:50PM on November 26, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 257, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 07:21PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 257, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 07:23PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 257, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 07:33PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 257, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 08:00PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 257, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 08:08PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 203, in main1
+    sending_run(username, password, receiver, save_folder, stamp_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 79, in sending_run
+    server = PYemail.setupSMTP(host_address, port_number, username, password)
+NameError: name 'host_address' is not defined
+
+
+
+
+
+Date: 08:10PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 257, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 08:12PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 258, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 08:13PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 08:28PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 08:28PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 256, in main2
+    host_addr, port_num, username, password, credentials_OK = PYemail.getCredentials(credential_path)
+ValueError: not enough values to unpack (expected 5, got 3)
+
+
+
+
+
+Date: 08:32PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 273, in main2
+    sleep(1)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 08:44PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 208, in sendAllJson
+    picture_data = json.loads(json_str)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+
+
+
+
+Date: 08:44PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 208, in sendAllJson
+    picture_data = json.loads(json_str)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 09:09PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 208, in sendAllJson
+    picture_data = json.loads(json_str)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+
+
+
+
+Date: 09:09PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 208, in sendAllJson
+    picture_data = json.loads(json_str)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 09:09PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 208, in sendAllJson
+    picture_data = json.loads(json_str)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+
+
+
+
+Date: 09:09PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 208, in sendAllJson
+    picture_data = json.loads(json_str)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 09:15PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 208, in sendAllJson
+    picture_data = json.loads(json_str)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+
+
+
+
+Date: 09:15PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 208, in sendAllJson
+    picture_data = json.loads(json_str)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 09:22PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+
+
+
+
+Date: 09:22PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 09:26PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+
+
+
+
+Date: 09:26PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 10:11PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+
+
+
+
+Date: 10:11PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 10:11PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+
+
+
+
+Date: 10:11PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 10:13PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+
+
+
+
+Date: 10:13PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 117, in sending_run_json
+    host_address, port_number, username, password = credentials.getCurrentCredentials()
+  File "/home/pi/ImageAnalysis/PYemail.py", line 38, in getCurrentCredentials
+    return (self.credentials[self.current]['host address'],
+KeyError: 'host address'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 10:33PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 212, in sendAllJson
+    server.send_message(msg)
+  File "/usr/lib/python3.5/smtplib.py", line 958, in send_message
+    g.flatten(msg_copy, linesep='\r\n')
+  File "/usr/lib/python3.5/email/generator.py", line 116, in flatten
+    self._write(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 181, in _write
+    self._dispatch(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 214, in _dispatch
+    meth(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 272, in _handle_multipart
+    g.flatten(part, unixfrom=False, linesep=self._NL)
+  File "/usr/lib/python3.5/email/generator.py", line 116, in flatten
+    self._write(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 181, in _write
+    self._dispatch(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 214, in _dispatch
+    meth(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 432, in _handle_text
+    super(BytesGenerator,self)._handle_text(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 248, in _handle_text
+    payload = fcre.sub('>From ', payload)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 10:33PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 212, in sendAllJson
+    server.send_message(msg)
+  File "/usr/lib/python3.5/smtplib.py", line 958, in send_message
+    g.flatten(msg_copy, linesep='\r\n')
+  File "/usr/lib/python3.5/email/generator.py", line 116, in flatten
+    self._write(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 181, in _write
+    self._dispatch(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 214, in _dispatch
+    meth(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 272, in _handle_multipart
+    g.flatten(part, unixfrom=False, linesep=self._NL)
+  File "/usr/lib/python3.5/email/generator.py", line 116, in flatten
+    self._write(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 181, in _write
+    self._dispatch(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 214, in _dispatch
+    meth(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 432, in _handle_text
+    super(BytesGenerator,self)._handle_text(msg)
+  File "/usr/lib/python3.5/email/generator.py", line 248, in _handle_text
+    payload = fcre.sub('>From ', payload)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 10:34PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 212, in sendAllJson
+    server.send_message(msg)
+  File "/usr/lib/python3.5/smtplib.py", line 961, in send_message
+    rcpt_options)
+  File "/usr/lib/python3.5/smtplib.py", line 877, in sendmail
+    (code, resp) = self.data(msg)
+  File "/usr/lib/python3.5/smtplib.py", line 567, in data
+    self.send(q)
+  File "/usr/lib/python3.5/smtplib.py", line 353, in send
+    self.sock.sendall(s)
+  File "/usr/lib/python3.5/ssl.py", line 899, in sendall
+    v = self.send(data[count:])
+  File "/usr/lib/python3.5/ssl.py", line 869, in send
+    return self._sslobj.write(data)
+  File "/usr/lib/python3.5/ssl.py", line 594, in write
+    return self._sslobj.write(data)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 10:34PM on December 03, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 212, in sendAllJson
+    server.send_message(msg)
+  File "/usr/lib/python3.5/smtplib.py", line 961, in send_message
+    rcpt_options)
+  File "/usr/lib/python3.5/smtplib.py", line 877, in sendmail
+    (code, resp) = self.data(msg)
+  File "/usr/lib/python3.5/smtplib.py", line 567, in data
+    self.send(q)
+  File "/usr/lib/python3.5/smtplib.py", line 353, in send
+    self.sock.sendall(s)
+  File "/usr/lib/python3.5/ssl.py", line 899, in sendall
+    v = self.send(data[count:])
+  File "/usr/lib/python3.5/ssl.py", line 869, in send
+    return self._sslobj.write(data)
+  File "/usr/lib/python3.5/ssl.py", line 594, in write
+    return self._sslobj.write(data)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 01:39AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 273, in main2
+    sleep(1)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 01:46AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 237, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 01:46AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 237, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 01:46AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 237, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 01:46AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 237, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 01:49AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 237, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 01:49AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 237, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 01:50AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 239, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 01:50AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 239, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 01:53AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 240, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 01:53AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 240, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 01:57AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 241, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 01:57AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 241, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 01:58AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 241, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 01:58AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 241, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 02:08AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 242, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 02:08AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 242, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 02:09AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 02:09AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 02:19AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 243, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+
+
+
+
+Date: 02:19AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 243, in sendAllJson
+    imageString = imagePath(picture_path)
+NameError: name 'imagePath' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/ImageAnalysis/master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "/home/pi/ImageAnalysis/master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+  File "/usr/lib/python3/dist-packages/thonny/shared/thonny/backend.py", line 133, in signal_handler
+    raise KeyboardInterrupt("Execution interrupted")
+KeyboardInterrupt: Execution interrupted
+
+
+
+
+
+Date: 03:21AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 246, in sendAllJson
+    addToDB(db, u'photos', unicode(picture_data['taken'][i]), {
+NameError: name 'unicode' is not defined
+
+
+
+
+
+Date: 03:21AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 246, in sendAllJson
+    addToDB(db, u'photos', unicode(picture_data['taken'][i]), {
+NameError: name 'unicode' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:23AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    addToDB(db, u'photos', unicode(picture_data['taken'][i]), {
+NameError: name 'unicode' is not defined
+
+
+
+
+
+Date: 03:23AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    addToDB(db, u'photos', unicode(picture_data['taken'][i]), {
+NameError: name 'unicode' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:26AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    print(unicode(picture_data['taken'][i]))
+NameError: name 'unicode' is not defined
+
+
+
+
+
+Date: 03:26AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    print(unicode(picture_data['taken'][i]))
+NameError: name 'unicode' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:32AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    addToDB(db, u'photos', str(picture_data['taken'][i], 'utf-8'), {
+TypeError: decoding str is not supported
+
+
+
+
+
+Date: 03:32AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    addToDB(db, u'photos', str(picture_data['taken'][i], 'utf-8'), {
+TypeError: decoding str is not supported
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:32AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    print(str(picture_data['taken'][i], 'utf-8'))
+TypeError: decoding str is not supported
+
+
+
+
+
+Date: 03:32AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    print(str(picture_data['taken'][i], 'utf-8'))
+TypeError: decoding str is not supported
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:36AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    addToDB(db, u'photos', str(datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"), 'utf-8'), {
+TypeError: decoding str is not supported
+
+
+
+
+
+Date: 03:36AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 244, in sendAllJson
+    addToDB(db, u'photos', str(datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"), 'utf-8'), {
+TypeError: decoding str is not supported
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:36AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 245, in sendAllJson
+    addToDB(db, u'photos', str(datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"), 'utf-8'), {
+TypeError: decoding str is not supported
+
+
+
+
+
+Date: 03:36AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 245, in sendAllJson
+    addToDB(db, u'photos', str(datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"), 'utf-8'), {
+TypeError: decoding str is not supported
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:37AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 245, in sendAllJson
+    addToDB(db, u'photos', datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y").decode('utf-8'), {
+AttributeError: 'str' object has no attribute 'decode'
+
+
+
+
+
+Date: 03:37AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 245, in sendAllJson
+    addToDB(db, u'photos', datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y").decode('utf-8'), {
+AttributeError: 'str' object has no attribute 'decode'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:38AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 246, in sendAllJson
+    addToDB(db, u'photos', datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y").decode('utf-8'), {
+AttributeError: 'str' object has no attribute 'decode'
+
+
+
+
+
+Date: 03:38AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 246, in sendAllJson
+    addToDB(db, u'photos', datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y").decode('utf-8'), {
+AttributeError: 'str' object has no attribute 'decode'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 03:43AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 240, in main2
+    camera = PiCamera()
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 433, in __init__
+    self._init_preview()
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 513, in _init_preview
+    self, self._camera.outputs[self.CAMERA_PREVIEW_PORT])
+  File "/usr/lib/python3/dist-packages/picamera/renderers.py", line 558, in __init__
+    self.renderer.inputs[0].connect(source).enable()
+  File "/usr/lib/python3/dist-packages/picamera/mmalobj.py", line 2212, in enable
+    prefix="Failed to enable connection")
+  File "/usr/lib/python3/dist-packages/picamera/exc.py", line 184, in mmal_check
+    raise PiCameraMMALError(status, prefix)
+picamera.exc.PiCameraMMALError: Failed to enable connection: Out of resources
+
+
+
+
+
+Date: 03:43AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 240, in main2
+    camera = PiCamera()
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 433, in __init__
+    self._init_preview()
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 513, in _init_preview
+    self, self._camera.outputs[self.CAMERA_PREVIEW_PORT])
+  File "/usr/lib/python3/dist-packages/picamera/renderers.py", line 558, in __init__
+    self.renderer.inputs[0].connect(source).enable()
+  File "/usr/lib/python3/dist-packages/picamera/mmalobj.py", line 2212, in enable
+    prefix="Failed to enable connection")
+  File "/usr/lib/python3/dist-packages/picamera/exc.py", line 184, in mmal_check
+    raise PiCameraMMALError(status, prefix)
+picamera.exc.PiCameraMMALError: Failed to enable connection: Out of resources
+
+
+
+
+
+Date: 03:43AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "master.py", line 240, in main2
+    camera = PiCamera()
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 433, in __init__
+    self._init_preview()
+  File "/usr/lib/python3/dist-packages/picamera/camera.py", line 513, in _init_preview
+    self, self._camera.outputs[self.CAMERA_PREVIEW_PORT])
+  File "/usr/lib/python3/dist-packages/picamera/renderers.py", line 558, in __init__
+    self.renderer.inputs[0].connect(source).enable()
+  File "/usr/lib/python3/dist-packages/picamera/mmalobj.py", line 2212, in enable
+    prefix="Failed to enable connection")
+  File "/usr/lib/python3/dist-packages/picamera/exc.py", line 184, in mmal_check
+    raise PiCameraMMALError(status, prefix)
+picamera.exc.PiCameraMMALError: Failed to enable connection: Out of resources
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Date: 04:01AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544846496.843467266","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 248, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+
+
+
+
+Date: 04:01AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544846496.843467266","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 248, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 04:34AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544848498.620284254","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 248, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+
+
+
+
+Date: 04:34AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544848498.620284254","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 248, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 04:26AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544848010.409699842","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 248, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+
+
+
+
+Date: 04:26AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544848010.409699842","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 248, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 04:38AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544848719.814414809","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 249, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+
+
+
+
+Date: 04:38AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544848719.814414809","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 249, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
+Date: 04:40AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544848838.817271868","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 249, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+
+
+
+
+Date: 04:40AM on December 15, 2018
+	Connected to internet: True
+Traceback (most recent call last):
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 547, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/pi/.local/lib/python3.5/site-packages/grpc/_channel.py", line 466, in _end_unary_response_blocking
+    raise _Rendezvous(state, None, None, deadline)
+grpc._channel._Rendezvous: <_Rendezvous of RPC that terminated with:
+	status = StatusCode.INVALID_ARGUMENT
+	details = "The value of property "im" is longer than 1048487 bytes."
+	debug_error_string = "{"created":"@1544848838.817271868","description":"Error received from peer","file":"src/core/lib/surface/call.cc","file_line":1036,"grpc_message":"The value of property "im" is longer than 1048487 bytes.","grpc_status":3}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "master.py", line 122, in sending_run_json
+    sent_all = PYemail.sendAllJson(username, receiver, json_paths, server, delete_sent = True)
+  File "/home/pi/ImageAnalysis/PYemail.py", line 249, in sendAllJson
+    u'time': picture_data['taken'][i]
+  File "/home/pi/ImageAnalysis/PYemail.py", line 184, in addToDB
+    doc_ref.set(json)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/document.py", line 223, in set
+    write_results = batch.commit()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/batch.py", line 135, in commit
+    transaction=None, metadata=self._client._rpc_metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/cloud/firestore_v1beta1/gapic/firestore_client.py", line 913, in commit
+    request, retry=retry, timeout=timeout, metadata=metadata)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/gapic_v1/method.py", line 143, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 270, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/retry.py", line 179, in retry_target
+    return target()
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/timeout.py", line 214, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pi/.local/lib/python3.5/site-packages/google/api_core/grpc_helpers.py", line 59, in error_remapped_callable
+    six.raise_from(exceptions.from_grpc_error(exc), exc)
+  File "<string>", line 3, in raise_from
+google.api_core.exceptions.InvalidArgument: 400 The value of property "im" is longer than 1048487 bytes.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "master.py", line 270, in main2
+    sending_run_json(valid_credentials, receiver, unsent_json_folder)
+  File "master.py", line 150, in sending_run_json
+    os.kill(os.getpid(), signal.SIGINT)
+KeyboardInterrupt
+
+
+
+
+
